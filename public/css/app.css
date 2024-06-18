@@ -1274,6 +1274,12 @@ input:checked + .toggle-bg {
 .mt-8 {
   margin-top: 2rem;
 }
+.mb-8 {
+  margin-bottom: 2rem;
+}
+.mt-0 {
+  margin-top: 0px;
+}
 .block {
   display: block;
 }
@@ -1530,6 +1536,9 @@ input:checked + .toggle-bg {
 }
 .flex-shrink {
   flex-shrink: 1;
+}
+.shrink-0 {
+  flex-shrink: 0;
 }
 .flex-grow {
   flex-grow: 1;
@@ -2559,6 +2568,10 @@ input:checked + .toggle-bg {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
+.text-slate-400 {
+  --tw-text-opacity: 1;
+  color: rgb(148 163 184 / var(--tw-text-opacity));
+}
 .underline {
   text-decoration-line: underline;
 }
@@ -2873,6 +2886,11 @@ input:checked + .toggle-bg {
 .hover\:bg-white:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-slate-200:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(226 232 240 / var(--tw-bg-opacity));
 }
 
 .hover\:text-\[\#009CDE\]:hover {
@@ -3275,6 +3293,10 @@ input:checked + .toggle-bg {
     grid-template-columns: repeat(7, minmax(0, 1fr));
   }
 
+  .sm\:grid-cols-8 {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+  }
+
   .sm\:flex-row {
     flex-direction: row;
   }
@@ -3301,6 +3323,10 @@ input:checked + .toggle-bg {
 
   .sm\:rounded-none {
     border-radius: 0px;
+  }
+
+  .sm\:border-l {
+    border-left-width: 1px;
   }
 
   .sm\:bg-transparent {
@@ -3333,6 +3359,10 @@ input:checked + .toggle-bg {
     text-align: left;
   }
 
+  .sm\:text-center {
+    text-align: center;
+  }
+
   .sm\:text-right {
     text-align: right;
   }
@@ -3340,6 +3370,14 @@ input:checked + .toggle-bg {
   .sm\:text-sm {
     font-size: 0.875rem;
     line-height: 1.25rem;
+  }
+
+  .sm\:font-semibold {
+    font-weight: 600;
+  }
+
+  .sm\:last\:border-r:last-child {
+    border-right-width: 1px;
   }
 }
 
@@ -3404,6 +3442,10 @@ input:checked + .toggle-bg {
 
   .md\:grid-cols-5 {
     grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .md\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .md\:flex-row {
