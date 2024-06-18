@@ -47,7 +47,7 @@
                     </div>
                 </div>
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                    <thead class="text-xs text-white uppercase bg-secondary ">
+                    <thead class="text-xs text-white uppercase bg-primary ">
                         <tr>
                             <th scope="col" class="px-6 py-3">
                                 NOMBRE

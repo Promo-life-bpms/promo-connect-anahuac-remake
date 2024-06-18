@@ -16,7 +16,7 @@
       
         <table class="w-full table-auto">
             <thead class="text-sm">
-              <tr class="bg-blue-900 text-white">
+              <tr class="bg-primary text-white">
                 <th style="width: 10%;" class="p-2">#</th>
                 <th style="width: 10%;">Imagen</th>
                 <th style="width: 10%;">Producto</th>
