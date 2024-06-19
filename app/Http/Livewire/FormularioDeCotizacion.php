@@ -13,6 +13,7 @@ use App\Models\Size;
 use App\Models\SizeMaterialTechnique;
 use App\Models\Technique;
 use App\Models\TemporalImageUrl;
+use App\Models\UserLogs;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
@@ -287,7 +288,22 @@ class FormularioDeCotizacion extends Component
             'more_details' => json_encode($more_detail)
         ];
 
+
         $createCurrentQuote =  $currentQuote->currentQuoteDetails()->create($dataQuote);
+
+
+        $add_to_cart_data = [
+            'product_id' => $this->product->id,
+            'cantidad' => $this->cantidad,
+            'precio_total' => $this->costoTotal,
+        ];
+
+        $create_user_logs = new UserLogs();
+        $create_user_logs->user_id =  $user->id;
+        $create_user_logs->type =  'add_to_cart';
+        $create_user_logs->value = json_encode($add_to_cart_data) ;
+        $create_user_logs->save();
+
 
         $createCurrentQuotesTechniques = new CurrentQuotesTechniques();
         $createCurrentQuotesTechniques->current_quotes_details_id = $createCurrentQuote->id;

@@ -20,6 +20,7 @@ use App\Models\ShoppingProduct;
 use App\Models\ShoppingTechnique;
 use App\Models\ShoppingUpdate;
 use App\Models\User;
+use App\Models\UserLogs;
 use App\Notifications\RequestedSampleNotification;
 use App\Notifications\SendEmailCotizationNotification;
 use Exception;
@@ -125,6 +126,19 @@ class CurrentQuoteComponent extends Component
 
     public function eliminar(CurrentQuoteDetails $cqd)
     {
+    
+        $product_data = [
+            'product_id' => $cqd->product_id,
+            'cantidad' => $cqd->cantidad,
+            'precio_total' => $cqd->precio_total,
+        ];
+
+        $create_user_logs = new UserLogs();
+        $create_user_logs->user_id = auth()->user()->id;
+        $create_user_logs->type = 'delete_from_cart';
+        $create_user_logs->value = json_encode($product_data );
+        $create_user_logs->save();
+
         $cqd->delete();
         if (count(auth()->user()->currentQuote->currentQuoteDetails) < 1) {
             auth()->user()->currentQuote->delete();
