@@ -209,6 +209,9 @@
                 días
                 sin
                 previo aviso. Solo se bloquea el inventario al recibir Orden de Compra</li>
+            <li>
+                El crédito otorgado tiene un plazo de pago que varía entre 30 y 60 días naturales, según lo acordado en el momento de la compra.
+            </li>
         </ul>
     </div>
      

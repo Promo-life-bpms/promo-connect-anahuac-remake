@@ -178,7 +178,7 @@
                             style="width: 250px; text-align: center; vertical-align: middle; padding: 0; border-right: 1px solid black">
                             @if ($producto->image)
                                 <img src="{{ $producto->image }}"
-                                    style="max-height: 220px;height:auto;max-width: 220px;width:auto;">
+                                    style="max-height: 220px;max-width: 220px; object-fit: contain;">
                             @else
                                 <img src="img/default.jpg" width="180">
                             @endif
