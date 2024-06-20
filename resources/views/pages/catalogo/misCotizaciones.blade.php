@@ -158,15 +158,44 @@
                                                         </div>
                                                         <!-- Modal body -->
                                                         <div class="p-4 md:p-5 space-y-4 text-left">
-                                                            Para poder continuar con el proceso de compra, seleccione el tipo y número de orden.
+                                                            Para poder continuar con el proceso de compra, confirma tu área y campus.
                                                             <br>
+                                                          
+                                                           
                                                             <div class="flex items-center space-x-4">
-                                                                <select id="type_order" name="type_order" class="form-select">
-                                                                    <option value="GNP" selected>GNP</option>
-                                                                    <option value="OC">OC</option>
-                                                                </select>
-                                                                <input type="text" name="oc" id="oc" class="w-full form-input" required>
+                                                                <div>
+                                                                    <label for="">Áea</label>
+                                                                    <br>
+                                                                    <select id="type_order" name="type_order" class="form-select">
+                                                                        <option value="">Seleccione su tipo...</option>
+                                                                        <option value="Estudiante">Estudiante</option>
+                                                                        <option value="Académico">Académico</option>
+                                                                        <option value="Administrativo">Administrativo</option>
+                                                                        <option value="Personal de Mantenimiento">Personal de Mantenimiento</option>
+                                                                        <option value="Investigador">Investigador</option>
+                                                                        <option value="Bibliotecario">Bibliotecario</option>
+                                                                        <option value="Otros">Otros</option>
+                                                                    </select>
+                                                                </div>
+                                                                
+                                                                <div>
+                                                                    <label for="">Campus</label>
+                                                                    <br>
+                                                                    <select id="campus" class="appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:bg-white focus:border-orange-500" name="oc" required>
+                                                                        <option value="">Seleccione su campus...</option>
+                                                                        <option value="Huixquilucan">Huixquilucan</option>
+                                                                        <option value="Sur">Sur</option>
+                                                                        <option value="Norte">Norte</option>
+                                                                        <option value="Querétaro">Querétaro</option>
+                                                                        <option value="Oaxaca">Oaxaca</option>
+                                                                        <option value="Mérida">Mérida</option>
+                                                                        <option value="Xalapa">Xalapa</option>
+                                                                        <option value="Cancún">Cancún</option>
+                                                                    </select>
+                                                                </div>
                                                             </div>
+
+                                                           
                                                         </div>
                                                         <!-- Modal footer -->
                                                         <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
