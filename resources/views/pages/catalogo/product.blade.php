@@ -82,7 +82,7 @@
                                 clip-rule="evenodd" />
                         </svg>
                     </div> -->
-                <p class="text-3xl col-start-2 col-span-4 md:text-4xl hyphens-auto">
+                <p class="text-3xl col-start-1 col-span-4 md:text-4xl hyphens-auto" style="margin-left: 22px;">
                     <strong>{{ $product->name }}</strong>
                 </p>
                 <div class="col-start-1 col-span-5 mt-4 space-y-2 px-6">
