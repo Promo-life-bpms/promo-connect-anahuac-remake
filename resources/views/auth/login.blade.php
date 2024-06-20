@@ -16,11 +16,20 @@
                 <div ></div>
                 <div class="flex bg-orange-500 bg-opacity-50" style="width:1000px;">
                     <div class="flex-1 w-1/2 ml-10" >
-                       
+
                         
                             <div class="max-w-full p-10 rounded  shadow-2xl bg-white -mt-10 -mb-10" >
+                                @if (session('email'))
+                                    <div class="bg-orange-100 text-orange-700 px-4 py-2" role="alert">
+                                        <p class="font-bold">¡Registro exitoso!</p>
+                                        <p class="text-sm">Enviamos tu contraseña temporal al correo registrado</p>
+                                    </div>
+                                @endif
+                                
                                 <div class="separator mt-8"></div>
+                               
                                 <div class="flex items-center justify-center">
+                                   
                                     <h1 class="text-2xl font-bold text-primary">
                                         INICIAR SESIÓN
                                     </h1>
@@ -34,11 +43,11 @@
                                     </label>
                                     
                                     <div class="w-full">
-                                        <input type="email" class="appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:bg-white focus:border-orange-500" name="email" value="{{ old('email') }}" placeholder="Ingrese su correo" required autocomplete="email" autofocus>
+                                        <input type="email" class="appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:bg-white focus:border-orange-500 @error('email') border-red-500 @enderror" name="email" value="{{ old('email') }}" placeholder="Ingrese su correo" required autocomplete="email" autofocus>
                                         @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <p class="text-sm text-red-700 font-semibold">{{ $message }}</p>
-                                        </span>
+                                            <span class="invalid-feedback" role="alert">
+                                                <p class="text-sm text-red-700 font-semibold">{{ $message }}</p>
+                                            </span>
                                         @enderror
                                     </div>
                                     
@@ -69,9 +78,10 @@
                                     </div>
                                 </form>
                                 <div class="mx-4 -mt-6">
-                                    <button type="submit" class="text-primary border border-primary bg-white inline-block w-full rounded px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal transition duration-150 ease-in-out">
-                                        CREAR CUENTA
-                                    </button>
+                                    <a href="/register-user" class="text-primary text-center border border-primary bg-white inline-block w-full rounded px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal transition duration-150 ease-in-out">
+                                        REGISTRARME
+                                    </a>
+                                   
                                 </div>
                                
                                 <div class="separator mt-8"></div>

@@ -1,77 +1,156 @@
-@extends('layouts.app')
+@extends('layouts.guest')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+   <style>
+        body {
+            background-image: url('{{ asset('img/bg-login.png') }}') !important;
+            background-size: cover; /* Otra propiedad opcional para ajustar el tamaño de la imagen */
+        }
+   </style>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
+    <div class="flex items-center justify-center h-screen">
+        <div style="width:70%;">
+            
 
-                        <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
+            <div class="container flex justify-center items-center">
+                <div ></div>
+                <div class="flex bg-orange-500 bg-opacity-50" style="width:1000px;">
+                    <div class="flex-1 w-1/2 ml-10" >
+                       
+                            <div class="max-w-full p-10 rounded  shadow-2xl bg-white -mt-10 -mb-10" >
+                                <div class="separato"></div>
+                                <div class="flex items-center justify-center">
+                                    <h1 class="text-2xl font-bold text-primary">
+                                        REGISTRO
+                                    </h1>
+                                </div>
+                    
+                                <form class="w-full p-4" method="POST" action="{{ route('storeUser') }}">
+                                    @csrf
+                                    
+                                    <label class="block text-gray-500 font-bold text-left mb-1 md:mb-0 pr-4 pb-2" for="inline-full-name">
+                                        Nombre(s) y apellidos
+                                    </label>
+                                    
+                                    <div class="w-full">
+                                        <input type="text" class="appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:bg-white focus:border-orange-500" name="name" value="{{ old('name') }}" placeholder="Ingrese su nombre completo" required autocomplete="email" autofocus>
+                                        <p id="email-error-message" class="text-sm text-red-700 font-semibold hidden">El correo electrónico debe ser institucional de la Universidad Anáhuac.</p>
+                                        @error('name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <p class="text-sm text-red-700 font-semibold">{{ $message }}</p>
+                                        </span>
+                                        @enderror
+                                    </div>
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                    <div class="separador mt-4"></div>
+                                    <label class="block text-gray-500 font-bold text-left mb-1 md:mb-0 pr-4 pb-2" for="inline-full-name">
+                                        Correo institucional
+                                    </label>
+                                    
+                                    <div class="w-full">
+                                        <input id="email" type="email" class="appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:bg-white focus:border-orange-500" name="email" value="{{ old('email') }}" placeholder="Ingrese su correo institucional" required autocomplete="email" autofocus>
+                                        @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <p class="text-sm text-red-700 font-semibold">{{ $message }}</p>
+                                        </span>
+                                        @enderror
+                                    </div>
 
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+
+
+                                    <div class="separador mt-4"></div>
+                                    <label class="block pb-2 text-gray-500 font-bold text-left mb-1 md:mb-0 pr-4" for="inline-password">
+                                        Área
+                                    </label>
+                                   
+                                    <div class="w-full mb-4">
+                                        <select id="area" class="appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:bg-white focus:border-orange-500" name="area" required>
+                                            <option value="">Seleccione su tipo...</option>
+                                            <option value="Estudiante">Estudiante</option>
+                                            <option value="Académico">Académico</option>
+                                            <option value="Administrativo">Administrativo</option>
+                                            <option value="Personal de Mantenimiento">Personal de Mantenimiento</option>
+                                            <option value="Investigador">Investigador</option>
+                                            <option value="Bibliotecario">Bibliotecario</option>
+                                            <option value="Otros">Otros</option>
+                                        </select>
+                                        
+                                    </div>
+
+                                    <div class="separador mt-4"></div>
+                                    <label class="block pb-2 text-gray-500 font-bold text-left mb-1 md:mb-0 pr-4" for="inline-password">
+                                        Campus
+                                    </label>
+                                   
+                                    <div class="w-full mb-4">
+                                        <select id="campus" class="appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:bg-white focus:border-orange-500" name="campus" required>
+                                            <option value="">Seleccione su campus...</option>
+                                            <option value="Huixquilucan">Huixquilucan</option>
+                                            <option value="Sur">Sur</option>
+                                            <option value="Norte">Norte</option>
+                                            <option value="Querétaro">Querétaro</option>
+                                            <option value="Oaxaca">Oaxaca</option>
+                                            <option value="Mérida">Mérida</option>
+                                            <option value="Xalapa">Xalapa</option>
+                                            <option value="Cancún">Cancún</option>
+                                        </select>                                      
+                                      
+                                    </div>
+
+                                    <br>
+                                    <div class="mx-4 mt-4">
+                                   
+                                </div>
+
+                                <button type="submit" class="text-white border border-primary bg-primary inline-block w-full rounded px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal transition duration-150 ease-in-out">
+                                        REGISTRARME
+                                    </button>
+                                </form>
+                                
                             </div>
+    
+                    </div>
+                    <div class="flex-1 w-1/2">
+                        <div class="flex items-center justify-center" >
+                            <img src="{{ asset('img/anahuac-logo.png') }}" alt="logo" style="width: 260px; height: 260px;margin-top:60px;" >
                         </div>
+                    </div>
+                </div>  
 
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
             </div>
+
         </div>
+        
     </div>
-</div>
+
+    @php
+    $anahuacDomain = '@anahuac';
+@endphp
+
+@push('scripts')
+    <script>
+  
+        function validateAnahuacEmail(email) {
+            return email.toLowerCase().endsWith('@anahuac.mx');
+        }
+        
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('email').addEventListener('blur', function() {
+                var emailInput = this.value.trim();
+                var isValid = validateAnahuacEmail(emailInput);
+                var errorMessage = document.getElementById('email-error-message');
+
+                if (!isValid) {
+                    this.classList.add('border-red-500');
+                    errorMessage.classList.remove('hidden');
+                } else {
+                    this.classList.remove('border-red-500');
+                    errorMessage.classList.add('hidden');
+                }
+            });
+        });
+
+    </script>
+@endpush
+   
 @endsection

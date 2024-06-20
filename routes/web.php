@@ -4,6 +4,7 @@ use App\Events\ChatEvent;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\APIController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CotizacionController;
 use App\Http\Controllers\CotizadorController;
 use App\Http\Controllers\ExportDataController;
@@ -11,6 +12,7 @@ use App\Http\Controllers\ImageProxyController;
 use App\Http\Controllers\SellerController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\NotificacionesController;
+use App\Http\Controllers\RegisterUserController;
 use App\Http\Controllers\ShoppingController;
 use App\Http\Controllers\TemporalImageUrlController;
 use Illuminate\Support\Facades\Route;
@@ -38,7 +40,9 @@ Route::post('/broadcasting/auth', function () {
 Route::get('/load-external-image', [ImageProxyController::class, 'loadExternalImage']);
 Route::post('/temporal-image', [TemporalImageUrlController::class, 'saveImage']);
 Route::get('/example-pdf', [CotizacionController::class, 'examplePDF']);
-
+Route::get('/register-user', [RegisterUserController::class, 'registerUser']);
+Route::post('/store-user', [RegisterUserController::class, 'storeUser'])->name('storeUser');
+ 
 Route::middleware(['auth'])->group(function () {
     Route::get('/', [CotizadorController::class, 'index'])->name('index');
     Route::get('/filter-category/{category}', [CotizadorController::class, 'categoryfilter'])->name('categoryfilter');

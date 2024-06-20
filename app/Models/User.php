@@ -25,7 +25,10 @@ class User extends Authenticatable
         'company_id',
         "visible",
         "last_login",
-        'phone'
+        'phone',
+        'area',
+        'campus',
+        'status'
     ];
 
     /**
