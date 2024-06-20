@@ -44,9 +44,9 @@
                     <td class="text-center py-5 px-6">{{ $shoppingInformation->information }}</td>
                     <td class="text-center">
                       @if($product['logo'] != '')
-                        <img src="/storage/logos/{{$product['logo'] }}" alt="" style="width: 100px;object-fit: contain;">
+                        <img src="/storage/logos/{{$product['logo'] }}" alt="" style="width: 100px;height:100px;object-fit: contain;">
                       @else
-                        <img src="{{$productImage->image_url}}" alt="" style="width: 100px;object-fit: contain;">
+                        <img src="{{$productImage->image_url}}" alt="" style="width: 100px; height:100px;object-fit: contain;">
                       @endif
                     </td>
 
