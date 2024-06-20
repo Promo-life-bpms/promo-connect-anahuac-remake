@@ -26,6 +26,7 @@ use App\Notifications\SendEmailCotizationNotification;
 use Exception;
 use Livewire\Component;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Session;
@@ -38,7 +39,7 @@ class CurrentQuoteComponent extends Component
     public $value, $type;
     public $quoteEdit, $quoteShow;
 
-    public $nombre, $telefono, $direccion = 'Corporativo GNP', $quote_id, $type_sample;
+    public $nombre, $telefono, $direccion, $quote_id, $type_sample;
 
     public $pdfDescargado = false;
     
@@ -319,14 +320,14 @@ class CurrentQuoteComponent extends Component
                 $createQuoteUpdate->type = 'created';
                 $createQuoteUpdate->save();
 
-                if($cotizacion->currentQuotesTechniques){
+                /* if($cotizacion->currentQuotesTechniques){
                     $createQuoteTechniques = new QuoteTechniques();
                     $createQuoteTechniques->quotes_id = $createQuote->id;
                     $createQuoteTechniques->material =  $cotizacion_techniques->material;
                     $createQuoteTechniques->technique = $cotizacion_techniques->technique;
                     $createQuoteTechniques->size = $cotizacion_techniques->size;
                     $createQuoteTechniques->save();
-                }
+                } */
 
                 array_push($quoteCotizationNumber, $createQuote->id );
             } 
@@ -341,8 +342,11 @@ class CurrentQuoteComponent extends Component
         /* $correoDestino = 'fsolano.fs69@gmail.com';
         Notification::route('mail', $correoDestino)
         ->notify(new SendEmailCotizationNotification($date, $quotes )); */
+        $user = auth()->user();
 
-        $pdf = \PDF::loadView('pages.pdf.promolife', ['date' => $date, 'quotes' => $quotes]);
+        $user = User::where('id', $quotes[0]->user_id)->get()->first();
+
+        $pdf = \PDF::loadView('pages.pdf.promolife', ['date' => $date, 'quotes' => $quotes, 'user' => $user]);
      
         /* $pdf = \PDF::loadView('pages.pdf.cotizacionBH', ['date' => $date, 'cotizacionActual' => $cotizacionActual, 'startQS' => $startQS]); */
         $pdf->setPaper('Letter', 'portrait');

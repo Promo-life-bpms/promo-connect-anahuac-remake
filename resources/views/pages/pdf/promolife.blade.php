@@ -55,7 +55,7 @@
 
 
 
-    <div style="margin-left:30px; margin-right:30px; margin-top:8px;">
+    <div style="margin-left:30px; margin-right:30px; margin-top:8px; ">
         
         <div style="width: 100%; height:1px; background-color:black; margin-top:8px; "></div>
         
@@ -101,7 +101,7 @@
 
                 <br>
                 <p style="margin-left:60px;">Cotizacion: <b>SQ-{{ $quote->id }}</b></p>
-                <table border="1" >
+                <table border="1"  style="width: 100%;">
                     <tr>
                         <th style="width:30%" >Imagen de Referencia</th>
                         <th style="width:70%" colspan="3">Descripción 
@@ -121,49 +121,33 @@
                     </tr>
                     <tr>
                         <th colspan="1" style="width:35%; padding:2px;">Detalles de envío </th>
-                        <th colspan="2" style="width:35%; padding:2px;" >Detalle de la Personalizacion </th>
+                        <th colspan="2" style="width:35%; padding:2px;" >Informacion de contacto </th>
                     </tr>
                     <tr>
                         <td colspan="1" style="width:35%">
                 
                             <p> 
-                                <b>Embalaje: </b>  
-                                @if(isset($productData->embalaje) && $productData->embalaje != 0)
-                                Si
+                                <b>Área: </b>  
+                                @if(isset($user->area))
+                                    {{$user->area }}
                                 @else
-                                No
+                                    No disponible
                                 @endif
                             </p>
                             <p> 
-                                <b>Armado: </b>   
-                                @if(isset($productData->embalaje) && $productData->embalaje != 0)
-                                Si
+                                <b>Campus: </b>   
+                                @if(isset($user->campus))
+                                    {{$user->campus }}
                                 @else
-                                No
+                                    No disponible
                                 @endif
                             </p>
-                            <p> 
-                                <b>Destino: </b>  
-                                @if(isset($productData->destino) && $productData->destino != 0)
-                                Si
-                                @else
-                                No
-                                @endif
-                            </p>
-                            <p> 
-                                <b>Detalles: </b>  
-                                @if(isset($productData->detalles) && $productData->detalles != '')
-                                    {{$productData->detalles}}
-                                @else
-                                No
-                                @endif
-                            </p> 
 
                         </td>
                         <td colspan="2" style="width:35%">
-                            <p> <b>Técnica: </b>  {{ isset($quoteTechnique->technique)? $quoteTechnique->technique :  '' }} </p>
-                            <p> <b>Material: </b>  {{ isset($quoteTechnique->material)? $quoteTechnique->material : ''  }} </p>
-                            <p> <b>Tamaño: </b>  {{ isset($quoteTechnique->size)? $quoteTechnique->size : '' }} </p>
+                            <p> <b>Nombre: </b>  {{  $user->name }} </p>
+                            <p> <b>Correo: </b>  {{ $user->email }} </p>
+                            <p> <b>Teléfono: </b>  {{ $user->phone != null? $user->phone : '' }} </p>
                         </td>
                     </tr>
                     <tr>

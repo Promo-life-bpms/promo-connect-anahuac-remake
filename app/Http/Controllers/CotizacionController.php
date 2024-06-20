@@ -68,7 +68,9 @@ class CotizacionController extends Controller
         $date =  Carbon::now()->format("d/m/Y");
         $quotes = Quote::where('id',$request->id)->get();
 
-        $pdf = \PDF::loadView('pages.pdf.promolife', ['date' => $date, 'quotes' => $quotes]);
+        $user = User::where('id', $quotes[0]->user_id)->get()->first();
+
+        $pdf = \PDF::loadView('pages.pdf.promolife', ['date' => $date, 'quotes' => $quotes, 'user'=> $user]);
         $pdf->setPaper('Letter', 'portrait');
         $filename = "Cotizacion.pdf";
         $pdf->save(public_path($filename));

@@ -4,7 +4,7 @@
     <p class="w-100 py-2"><strong>Personalizacion de la tecnica</strong></p>
     <div class="">
         <div class="rounded">
-            <div class="grid grid-cols-2">
+            <div class="grid grid-cols-2"  style="display: none;">
                 <div class="m-0 mb-1 col-span-1">
                     <label for="tecnica" class="text-dark m-0"><strong>Material</strong> </label>
                     <select name="" id=""
@@ -98,7 +98,7 @@
             <p  class="text-center m-2 font-bold text-xl">ó</p> -->
          
             <button class="w-full col-span-5 px-10 py-3 bg-gray-900 hover:bg-gray-900 text-stone-50"
-                data-modal-target="modalPersonalize" data-modal-toggle="modalPersonalize" type="button">
+                data-modal-target="modalPersonalize" data-modal-toggle="modalPersonalize" type="button" style='display:none;'>
                 Personaliza tu producto
             </button>
             <br>
@@ -197,37 +197,31 @@
                                 
                                 <div class="flex-initial">
                                     <canvas  wire:ignore id="canvas" width="400" height="400" crossorigin="anonymous" ></canvas> 
-                                    <p class="mt-2 text-sm text-semibold text-red-800"><b>Nota: </b>Imagen solo de referencia *</p>
                                 </div>
                                 <div class="flex-initial pl-4">
                             
                                     <p class="text-base font-bold">Selecciona tu logo </p>
 
-                                    <div class="grid grid-cols-3 gap-4">
-                                        <select id="logos" name="logos" class=" mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" style="width: 210px;">
-                                            <option value="Agente_GNP.png">Agente GNP</option>
-                                            <option value="Arena_GNP.png">Arena GNP</option>
-                                            <option value="Bienestar_organizacional.png">Bienestar organizacional</option>
-                                            <option value="Logo_de_GNP.png">Logo de GNP</option>
-                                            <option value="LOGO_EMPRESARIALES.png">Logo Empresariales</option>
-                                            <option value="LOGO_VIDA.png">Logo Vida</option>
-                                            <option value="Potros.png">Potros</option>
-                                            <option value="ViviresincreíbleAzul.png">Vivir es increíble Azul</option>
-                                            <option value="ViviresincreíbleNaranja.png">Vivir es increíble Naranja</option>
-                                        </select>
+                                    <div class="flex">
+                                        <div class="flex-1 w-50 bg-stone-300 p-2 mr-2 cursor-pointer" id="logo1">
+                                            <img src="{{asset('img/anahuac-logo.png')}}" alt="logo" class="w-30" id="">
+                                        </div>
+                                        <div class="flex-1 w-50 bg-stone-300 p-2 cursor-pointer" id="logo2">
+                                            <img src="{{asset('img/anahuac-logo2.png')}}" alt="logo" class="w-30">
+                                        </div>
                                     </div>
                                     
-                                    <br>
+                                   <br>
                                     
-                                   {{--  <input type="file"
+                                    <input type="file"
                                         class="block w-full text-sm text-slate-500 bg-violet-50
                                             file:rounded-full
                                             file:mr-4 file:py-2 file:px-4
                                             file:text-sm file:font-semibold mt-2"
-                                        wire:model="photo" accept="image/*" id="imageInput" > --}}
+                                        wire:model="photo" accept="image/*" id="imageInput" >
                                         
                                         <p class="inline-block cursor-pointer transition duration-300 ease-in-out text-stone-700 " id="clearImage" style="display:none;">Limpiar imagen</p>
-                                        
+                                        <br>
                                       
                                         <p class="text-base font-bold">Texto  (opcional) </p>
                                         <!-- <p class="text-sm mb-2">Coloca tu logo en la posicion deseada y descarga el producto personalizado</p>
@@ -249,7 +243,7 @@
                                         <br>
                                         <p class="text-base font-bold">Color de texto (opcional) </p>
                                         <input type="color" id="colorPicker" name="colorPicker" value="#ff0000">
-                                        <p class="mt-4"></p>
+                                        <p class="mt-24"></p>
                                         <!-- <div x-data="{ isUploading: false, progress: 0 }" x-on:livewire-upload-start="isUploading = true"
                                             x-on:livewire-upload-finish="isUploading = false"
                                             x-on:livewire-upload-error="isUploading = false"
@@ -279,7 +273,7 @@
         <div class="form-group m-0 mb-1 ">
             <label for="newTechnique" class="text-dark m-0">
                 <strong>Dias de entrega:</strong>
-                10
+                {{ $entrega }}
             </label>
         </div>
         <div class="form-group m-0 mb-1 ">
@@ -309,35 +303,9 @@
     <div class="justify-content-between  grid grid-cols-1">
         {{--  @if (!$priceScales) --}}
         <div>
-            <h6 class="text-success"><strong>Precio Final por Articulo:</strong> $ {{ number_format($costoCalculado,2)}}</h6>
-            <h6 class="text-success"><strong>Precio Total:</strong> $ {{ number_format($costoTotal,2)}}</h6>
-
-            <div class="form-group mt-5 mb-1">
-                <h5 class="font-bold">Detalles adicionales</h5>
-              
-                <div class="flex items-center">
-                  <input type="checkbox" name="embalaje" id="embalaje" class="mr-2" wire:model="embalaje">
-                  <label for="embalaje" class="text-sm">Con embalaje</label>
-                </div>
-              
-                <div class="flex items-center mt-2">
-                  <input type="checkbox" name="armado" id="armado" class="mr-2" wire:model="armado">
-                  <label for="armado" class="text-sm">Con armado</label>
-                </div>
-              
-                <div class="flex items-center mt-2">
-                  <input type="checkbox" name="destino" id="destino" class="mr-2" wire:model="destino">
-                  <label for="destino" class="text-sm">Con destino de envío</label>
-                </div>
-              
-                <div class="mt-4"> 
-                  <textarea type="textarea" rows="4" name="detalles" id="detalles" placeholder="Información adicional" class="w-full border border-gray-300 rounded-md p-2" wire:model="detalles"></textarea>
-                </div>
-            </div>
+            <h6 class="text-success"><strong>Precio Final por Articulo:</strong> $ {{ $precioCalculado }}</h6>
+            <h6 class="text-success"><strong>Precio Total:</strong> $ {{ $precioTotal }}</h6>
         </div>
-
-
-       
         {{--  @endif --}}
         <div class="form-group m-0 mb-1 text-center">
             @if ($currentQuote)
@@ -354,7 +322,7 @@
             @endif
         </div>
 
-        <button class="bg-primary hover:bg-primary-dark text-white py-3 col-span-4" wire:click="agregarCarrito()"> 
+        <button class="bg-primary hover:bg-primary-dark text-white py-3 col-span-4" wire:click="agregarCarrito()">
             Agregar al carrito
         </button>
         @if (session()->has('message'))
@@ -414,69 +382,19 @@
        /*  Obtener de path de imagenes */
         var imageURL = "{{ $product->images != '[]'?  $product->images[0]->image_url : '' }}";
         var productID = "{{ $product->id }}";
-
-        /* Logos */
-        var logo1 = "{{asset('img/Agente_GNP.png')}}";
-        var logo2 = "{{asset('img/Arena_GNP.png')}}";
-        var logo3 = "{{asset('img/Bienestar_organizacional.png')}}";
-        var logo4 = "{{asset('img/Logo_de_GNP.png')}}";
-        var logo5 = "{{asset('img/LOGO_EMPRESARIALES.png')}}";
-        var logo6 = "{{asset('img/LOGO_VIDA.png')}}";
-        var logo7 = "{{asset('img/Potros.png')}}";
-        var logo8 = "{{asset('img/Vivir_es_increíble_Azul.png')}}";
-        var logo9 = "{{asset('img/Vivir_es_increíble_Naranja.png')}}";
-
+        var logo1 = "{{asset('img/anahuac-logo.png')}}";
+        var logo2 = "{{asset('img/anahuac-logo2.png')}}";
         if(imageURL.startsWith("https://catalogodeproductos.promolife.lat/")){
             imageURL = imageURL.slice(41);
         }
         /* Identificadores */
         var selectedLogo1 = document.getElementById("logo1");
         var selectedLogo2 = document.getElementById("logo2");
-        var selectedLogo3 = document.getElementById("logo3");
-        var selectedLogo4 = document.getElementById("logo4");
-        var selectedLogo5 = document.getElementById("logo5");
-        var selectedLogo6 = document.getElementById("logo6");
-        var selectedLogo7 = document.getElementById("logo7");
-        var selectedLogo8 = document.getElementById("logo8");
-        var selectedLogo9 = document.getElementById("logo9");
-
-        var logoSelect = document.getElementById("logos");
         
         var logoURL = document.getElementById("imageInput");
 
-        var selectedImageLogo = null;
-
         /* Canvas en DOOM*/
         document.addEventListener("DOMContentLoaded", function () {
-
-            logoSelect.addEventListener("change", function () {
-                var selectedLogo = logoSelect.value;
-              
-                canvas.remove(selectedImageLogo);
-
-                // Construir la URL de la imagen dinámicamente
-                var logo = `{{asset('img/${selectedLogo}')}}`;
-                if (selectedImageLogo) {
-                    canvas.remove(selectedImageLogo);
-                }
-                   
-               
-                fabric.Image.fromURL(logo, function (image) {
-                    image.scaleToWidth(50);
-                    image.scaleToHeight(50);
-                    image.set({ left: 100, top: 100, selectable: true, crossOrigin: 'anonymous' });
-                    canvas.add(image);
-                    selectedImageLogo = image;
-                    
-                    canvas.renderAll();
-                });
-
-                canvas.remove(image);
-        
-                console.log("Logo seleccionado: " + selectedImage);
-            });
-
-
             /* Se inicializa */
             var canvas = new fabric.Canvas('canvas', {
                 backgroundColor: 'white'
@@ -505,9 +423,10 @@
             }
 
 
+            var selectedImage = null;
 
-            /* Evento para agregar imagenes desde input (deshabilitado si no esta el boton de logo personalizado) */
-           /*  imageInput.addEventListener("change", function (event) {
+            /* Evento para agregar imagenes desde input (deshabilitado) */
+            imageInput.addEventListener("change", function (event) {
                 var file = event.target.files[0];
                 document.getElementById('clearImage').style.display = 'block';
                 if (file) {
@@ -529,8 +448,38 @@
                     reader.readAsDataURL(file);
                 }
             });
- */
-                      
+
+            /* Evento para agregar el primer logo del modal */
+            selectedLogo1.addEventListener("click", function() { 
+                if (selectedImage) {
+                    canvas.remove(selectedImage);
+                }
+                fabric.Image.fromURL(logo1, function (image) {
+                    image.scaleToWidth(50);
+                    image.scaleToHeight(50);
+                    image.set({ left: 100, top: 100, selectable: true, crossOrigin: 'anonymous' });
+                    canvas.add(image);
+                    selectedImage = image;
+                    canvas.renderAll();
+                });
+            });
+
+            /* Evento para agregar el segundo logo del modal */
+            selectedLogo2.addEventListener("click", function() {
+                if (selectedImage) {
+                    canvas.remove(selectedImage);
+                }
+                fabric.Image.fromURL(logo2, function (image) {
+                    image.scaleToWidth(50);
+                    image.scaleToHeight(50);
+                    image.set({ left: 100, top: 100, selectable: true, crossOrigin: 'anonymous' });
+                    canvas.add(image);
+                    selectedImage = image;
+                    canvas.renderAll();
+                });
+            });
+
+            
 
             /* Evento para agregar texto */
             var textObject = null;

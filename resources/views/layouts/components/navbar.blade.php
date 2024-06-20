@@ -325,6 +325,11 @@
                             @endrole
                             @role(['buyers-manager', 'buyer'])
                                 <li>
+                                    <a href="{{ route('misCotizaciones') }}"
+                                        class="w-full text-left text-base block px-4 py-2 text-white hover:text-[#0F0E24] hover:bg-white">Mis
+                                        Cotizaciones</a>
+                                </li>
+                                <li>
                                     <a href="{{ route('compras') }}"
                                         class="w-full text-left text-base block px-4 py-2 text-white hover:text-[#0F0E24] hover:bg-white">Mis
                                         Compras</a>

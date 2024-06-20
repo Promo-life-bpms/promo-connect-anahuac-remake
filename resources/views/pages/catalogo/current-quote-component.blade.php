@@ -260,7 +260,7 @@
                     <label for="direcion">Direccion: </label>
                 </div>
                 <div class="col-span-2 py-2 @if($type_sample == 'virtual sin logotipo' || $type_sample == 'virtual con logotipo') hidden @endif">
-                    <textarea name="direccion" id="direccion" cols="10" rows="3" class="mt-1 block w-full border-gray-200 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 bg-stone-50 text-stone-500" wire:model="direccion" readonly>Corporativo GNP</textarea>
+                    <textarea name="direccion" id="direccion" cols="10" rows="3" class="mt-1 block w-full border-gray-200 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 bg-stone-50 text-stone-500" wire:model="direccion" ></textarea>
                     @error('direccion')
                     <span>{{ $message }}</span>
                     @enderror

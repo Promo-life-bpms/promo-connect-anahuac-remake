@@ -5,13 +5,10 @@ namespace App\Http\Livewire;
 use Livewire\WithFileUploads;
 use App\Models\Catalogo\GlobalAttribute;
 use App\Models\Catalogo\Product;
-use App\Models\CurrentQuotesTechniques;
 use App\Models\Material;
 use App\Models\MaterialTechnique;
 use App\Models\PricesTechnique;
-use App\Models\Size;
 use App\Models\SizeMaterialTechnique;
-use App\Models\Technique;
 use App\Models\TemporalImageUrl;
 use App\Models\UserLogs;
 use Illuminate\Support\Facades\Auth;
@@ -31,8 +28,6 @@ class FormularioDeCotizacion extends Component
 
     public $priceScales, $infoScales = [], $priceScalesComplete = [],  $cantidadEscala, $precioTecnicaEscala, $editScale = false, $itemEditScale = null;
 
-    public $detalles, $embalaje, $armado, $destino;
-
     public $materialSeleccionado;
     public $tecnicaSeleccionada;
     public $sizeSeleccionado;
@@ -42,7 +37,7 @@ class FormularioDeCotizacion extends Component
 
     public function mount()
     {
-        $this->utilidad = config('settings.utility');
+        $this->utilidad = config('settings.utility_aditional');
         // $this->priceScales = false;
         if ($this->currentQuote) {
             $this->product = Product::find($this->currentQuote->product_id);
@@ -93,15 +88,13 @@ class FormularioDeCotizacion extends Component
         }
 
         $utilidad = (float) config('settings.utility');
-        $priceProduct = $this->product->price * 0.9375;
- 
-        /* if ($this->product->producto_promocion) {
+        $priceProduct = $this->product->price;
+        if ($this->product->producto_promocion) {
             $priceProduct = round($priceProduct - $priceProduct * ($this->product->descuento / 100), 2);
         } else {
             $priceProduct = round($priceProduct - $priceProduct * ($this->product->provider->discount / 100), 2);
         }
-        $this->precio = round($priceProduct / ((100 - $utilidad) / 100), 2); */
-        $this->precio = $priceProduct ;
+        $this->precio = round($priceProduct / ((100 - $utilidad) / 100), 2);
         $this->precioCalculado = $this->precio;
     }
 
@@ -191,25 +184,12 @@ class FormularioDeCotizacion extends Component
             $precioDeTecnicaUsado = $precioDeTecnica;
             if ($this->newPriceTechnique != null && $this->newPriceTechnique >= 0)
                 $precioDeTecnicaUsado = $this->newPriceTechnique;
-           
+
             $this->costoCalculado = $this->precio + ($precioDeTecnicaUsado * $this->colores) + $this->operacion;
             $this->costoTotal = $this->costoCalculado * $this->cantidad;
-            
-            if($this->product->provider_id == 1){
-                /* FOR PROMOTIONAL */
-                $this->costoCalculado = ($this->costoCalculado) / ((100 - 0.0625) / 100);
-            }else if($this->product->provider_id == 2){
-                /* PROMO OPCION */
-                $this->costoCalculado = ($this->costoCalculado) / 1.07156;
-            }else if($this->product->provider_id == 3){
-                /* INNOVATION */
-                $this->costoCalculado = ($this->costoCalculado) *1.315481;
-            }else{
-                /* OTRO */
-                $this->costoCalculado = ($this->costoCalculado) / ((100 - 0.9375) / 100);
-            }
-            $this->costoTotal = $this->costoCalculado *  $this->cantidad;
 
+            $this->precioCalculado = round(($this->costoCalculado) / ((100 - $this->utilidad) / 100), 2);
+            $this->precioTotal = $this->precioCalculado * $this->cantidad;
         }
 
         $this->precioDeTecnica = $precioDeTecnica;
@@ -225,31 +205,17 @@ class FormularioDeCotizacion extends Component
 
     public function agregarCarrito()
     {
-        
         $user = Auth::user();
 
-        $this->validate([
+        /* $this->validate([
             'priceTechnique' => 'required',
             'cantidad' => 'required|numeric|min:1',
             'colores' => 'required|numeric|min:0',
-        ]);
-
-        $material = Material::findOrFail($this->materialSeleccionado);
-        $technique = Technique::findOrFail($this->tecnicaSeleccionada);
-        $size = Size::find($this->sizeSeleccionado);       
+        ]); */
 
         $temporalImage = TemporalImageUrl::where('product_id', $this->product->id)->where('type', 'no used')->where('user_id', $user->id)->get()->last();
 
         $currentQuote = auth()->user()->currentQuote;
-
-        $more_detail = [];
-
-        array_push( $more_detail, (object)[
-            'embalaje' => isset($this->embalaje)? 1:0,
-            'armado'  => isset($this->armado)? 1:0,
-            'destino' => isset($this->destino)? 1:0,
-            'detalles' => $this->detalles != ""? $this->detalles : "",
-        ]);
 
         if ($currentQuote === null) {
 
@@ -259,7 +225,7 @@ class FormularioDeCotizacion extends Component
         } else {
             if (auth()->user()->currentQuote) {
                 auth()->user()->currentQuote->discount = false;
-                auth()->user()->currentQuote->type =  null;
+                auth()->user()->currentQuote->type = null;
                 auth()->user()->currentQuote->value = null;
                 auth()->user()->currentQuote->save();
             }
@@ -284,13 +250,10 @@ class FormularioDeCotizacion extends Component
             'cantidad' => $this->cantidad,
             'precio_unitario' => $this->costoCalculado,
             'precio_total' => $this->costoTotal,
-            'logo' => $imageName,
-            'more_details' => json_encode($more_detail)
+            'logo' => $imageName
         ];
 
-
-        $createCurrentQuote =  $currentQuote->currentQuoteDetails()->create($dataQuote);
-
+        $currentQuote->currentQuoteDetails()->create($dataQuote);
 
         $add_to_cart_data = [
             'product_id' => $this->product->id,
@@ -303,14 +266,6 @@ class FormularioDeCotizacion extends Component
         $create_user_logs->type =  'add_to_cart';
         $create_user_logs->value = json_encode($add_to_cart_data) ;
         $create_user_logs->save();
-
-
-        $createCurrentQuotesTechniques = new CurrentQuotesTechniques();
-        $createCurrentQuotesTechniques->current_quotes_details_id = $createCurrentQuote->id;
-        $createCurrentQuotesTechniques->material = $material->nombre;
-        $createCurrentQuotesTechniques->technique = $technique->nombre; 
-        $createCurrentQuotesTechniques->size = $size->nombre; 
-        $createCurrentQuotesTechniques->save();
 
         session()->flash('message', 'Se ha agregado este producto al carrito.');
         $this->emit('currentQuoteAdded');
