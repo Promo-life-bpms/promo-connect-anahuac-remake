@@ -11,7 +11,7 @@
             }
         @endphp
     @endif
-    <div class="container mx-auto max-w-7xl py-2">
+    <div class="mx-auto max-w-7xl py-2">
         <div class="flex flex-col md:flex-row p-2 md:gap-x-5 gap-y-4 lg:gap-x-24">
             <div class="w-full md:w-2/3 lg:w-[62%]">
                 <div class="bg-stone-50 rounded-lg grid grid-cols-2 gap-x-6 p-4 lg:gap-x-0">

@@ -2,7 +2,7 @@
 
 @section('content')
     
-    <div class="container mx-auto w-full px-8">
+    <div class="mx-auto w-full px-8" style="padding-left: 5% !important;padding-right: 5% !important;">
     <style>
         tr:nth-child(even) {
         background-color: #fafafa;
@@ -62,8 +62,8 @@
         <div class="w-full">
             <table class="table-auto">
                 <thead>
-                    <tr class="bg-blue-900 text-white text-sm">
-                        <th style="width:5%;">Cotizacion</th>
+                    <tr class="bg-primary text-white text-sm">
+                        <th style="width:5%; padding:10px;">Cotizacion</th>
                         <th style="width:5%;">Logo</th>
                         <th style="width:10%;">Producto</th>
                         <th style="width:10%;">Usuario</th>
@@ -121,7 +121,7 @@
                                 <form method="POST" action="{{ route('downloadPDF') }}">
                                     @csrf
                                     <input type="hidden" name="id" value="{{ $quote->id }}">
-                                    <button type="submit" class="w-full bg-blue-700 hover:bg-blue-600 text-white font-bold p-2 rounded text-sm">
+                                    <button type="submit" class="w-full bg-secondary hover:bg-secondary text-white font-bold p-2 rounded text-sm">
                                         Descargar cotizacion
                                     </button>
                                 </form>

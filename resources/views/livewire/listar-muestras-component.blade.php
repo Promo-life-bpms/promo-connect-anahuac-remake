@@ -1,4 +1,4 @@
-<div class="bg-white container mx-auto h-auto max-w-7xl grid md:grid-cols-2 p-3 gap-y-2">
+<div class="bg-white mx-auto h-auto w-full grid md:grid-cols-2 p-3 gap-y-2"  style="padding-left: 5% !important;padding-right: 5% !important;">
     <div class="font-semibold text-slate-700 py-8 flex items-center space-x-2">
         <a class="text-secondary" href="/">Inicio</a>
         <p class="text-secondary"> / </p>
