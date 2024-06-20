@@ -98,9 +98,9 @@
                             <td class="text-center text-"><b>SQ-{{$quote->id}}</b></td>
                             <td class="text-center">
                                 @if($quote->logo == null || $quote->logo == '')
-                                    <img src="{{$productImage->image_url}}" alt="" style="width: 100px;object-fit: contain;">
+                                    <img src="{{$productImage->image_url}}" alt="" style="width: 100px; height:100px; object-fit: contain;">
                                 @else
-                                    <img class="" src="/storage/logos/{{$quote->logo}}" alt="logo" style="width: 100px;object-fit: contain;">
+                                    <img class="" src="/storage/logos/{{$quote->logo}}" alt="logo" style="width: 100px;  height:100px; object-fit: contain;">
                                 @endif
                             </td>
                             <td class="text-center">{{$productName }}</td>

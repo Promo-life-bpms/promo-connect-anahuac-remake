@@ -27,7 +27,7 @@
                             
                             <div>
                                 <img src="{{ $quote->images_selected ?: ($quote->product->firstImage ? $quote->product->firstImage->image_url : asset('img/default.jpg')) }}"
-                                    alt="" style="max-width: 200px; height: 100px; object-fit: contain;">
+                                    alt="" style="width: 100px; height: 100px; object-fit: contain; margin-right:20px;">
                             </div>
                         </div>
                         <div class="flex-grow space-y-3">

@@ -111,9 +111,9 @@
                         <td rowspan="6" style="width:30%"> 
 
                         @if($productLogo != null || $productLogo != '')
-                            <center><img style="width:200px; height:240px; object-fit:contain;" src="{{$filePath}}" alt=""></center>
+                            <center><img style="max-width:200px; max-height:240px; object-fit:contain;" src="{{$filePath}}" alt=""></center>
                         @else
-                            <center><img style="width:200px; height:240px; object-fit:contain;" src="data:image/png;base64,{{$image64}}" alt=""></center>
+                            <center><img style="max-width:200px; max-height:240px; object-fit:contain;" src="data:image/png;base64,{{$image64}}" alt=""></center>
                         @endif
                         </td>
                         <td colspan="3" style="width:70%; padding:2px;">{{ $productName }}</td>
