@@ -1,7 +1,6 @@
 <div>
     {{-- <form novalidate> --}}
 
-    <p class="w-100 py-2"><strong>Personalizacion de la tecnica</strong></p>
     <div class="">
         <div class="rounded">
             <div class="grid grid-cols-2"  style="display: none;">
@@ -74,22 +73,22 @@
             </div>
         </div>
         <div class="row">
-            <div class="grid grid-cols-1 md:grid-cols-3 mt-2">
-                <label><strong>Piezas</strong> </label>
+            <div class="grid grid-cols-2 md:grid-cols-3 mt-2">
+                <label class="text-sm">TOTAL DE PIEZAS: </label>
                 <br>
                 <input
                     class="grid grid-cols-3  w-full py-2 text-center rounded-lg ring-1 ring-inset placeholder:text-gray-300"
                     type="number" name="cantidad" wire:model="cantidad" placeholder="Piezas" min="0"
                     max="{{ $product->stock }}">
             </div>
-            <br>
-            <div class="grid grid-cols-1 md:grid-cols-3">
+
+
+            {{-- <div class="grid grid-cols-1 md:grid-cols-3">
                 <label class="col-span-2"><strong>Cantidad de Colores y / o Logos</strong> </label>
                 <input
                     class="flex flex-wrap w-full py-2 text-center rounded-lg ring-1 ring-inset placeholder:text-gray-300"type="number"
-                    name="colores" wire:model="colores" placeholder="Colores" min="0">
-            </div>
-            <br>
+                    name="colores" wire:model="colores" placeholder="Colores" min="0" value="1" hidden>
+            </div> --}}
             <!-- <button class="w-full col-span-5 px-10 py-3 bg-gray-900 hover:bg-gray-900 text-stone-50"
                 data-modal-target="modalLogos" data-modal-toggle="modalLogos" type="button">
                 {{ $photo ? 'Ver o cambiar logo/producto personalizado' : 'Subir logo' }}
@@ -101,9 +100,7 @@
                 data-modal-target="modalPersonalize" data-modal-toggle="modalPersonalize" type="button" style='display:none;'>
                 Personaliza tu producto
             </button>
-            <br>
             <img  wire:ignore.self id="previewImage" src="#" alt="Vista previa de la imagen generada" style="display: none; width:140px; height:140px;">
-            <br>
 
             <!-- Main modal -->
             <!-- <div wire:ignore.self id="modalLogos" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
@@ -270,20 +267,20 @@
     </div>
 
     <div class=" rounded">
-        <div class="form-group m-0 mb-1 ">
+        {{-- <div class="form-group m-0 mb-1 ">
             <label for="newTechnique" class="text-dark m-0">
                 <strong>Dias de entrega:</strong>
                 {{ $entrega }}
             </label>
-        </div>
-        <div class="form-group m-0 mb-1 ">
+        </div> --}}
+        {{-- <div class="form-group m-0 mb-1 ">
             <label for="newTechnique" class="text-dark m-0">
                 <strong>
                     Precio actual de la tecnica por articulo:
                 </strong>
                 $ {{ $precioDeTecnica * $colores }}
             </label>
-        </div>
+        </div> --}}
     </div>
     @if ($errors)
         <div wire:poll.12s>
@@ -300,11 +297,13 @@
             $errors = null;
         @endphp
     @endif
-    <div class="justify-content-between  grid grid-cols-1">
-        {{--  @if (!$priceScales) --}}
-        <div>
-            <h6 class="text-success"><strong>Precio Final por Articulo:</strong> $ {{ $precioCalculado }}</h6>
-            <h6 class="text-success"><strong>Precio Total:</strong> $ {{ $precioTotal }}</h6>
+  
+ <p class="w-full bg-stone-300 my-6" style="height:1px;"> </p>
+    <div class="justify-content-between w-full">
+        <p class="font-semibold my-2 text-lg">Precio</p>
+        {{--  @if (!$priceScales) --}}       
+            <h6 class="text-sm">PRECIO FINAL POR ARTÍCULO: <b> $ {{ $precioCalculado }}</b></h6>
+            <h6 class="text-sm">PRECIO TOTAL: <b>$ {{ $precioTotal }}</b> </h6>
         </div>
         {{--  @endif --}}
         <div class="form-group m-0 mb-1 text-center">
@@ -322,7 +321,7 @@
             @endif
         </div>
 
-        <button class="bg-primary hover:bg-primary-dark text-white py-3 col-span-4" wire:click="agregarCarrito()">
+        <button class="bg-primary hover:bg-primary-dark text-white py-3 col-span-4 w-full rounded mt-5" wire:click="agregarCarrito()">
             Agregar al carrito
         </button>
         @if (session()->has('message'))

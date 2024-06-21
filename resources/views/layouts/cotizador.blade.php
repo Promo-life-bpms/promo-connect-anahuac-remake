@@ -27,14 +27,14 @@
 </head>
 
 <body class="h-screen" style="margin-top:70px;">
-    <div class="h-full flex flex-col justify-between">  
+    <div class="min-h-full flex flex-col justify-between">  
         <div class="w-full bg-white">
             @include('layouts.components.navbar')
         </div>
         <div class="flex-grow w-full" style="margin-top:102px;">
             @yield('content')
         </div>
-        <div class="py-5 w-full bg-white">
+        <div class="py-5 w-full bg-white" >
             
             <div class="w-full flex justify-between items-center text-primary mt-4 ">
                 <div>

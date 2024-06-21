@@ -24,7 +24,7 @@ class FormularioDeCotizacion extends Component
     public $precio, $precioCalculado, $precioTotal = 0;
     public $costoTotal, $costoCalculado = 0;
 
-    public $tecnica = null, $colores = null, $operacion = null, $utilidad = null, $entrega = null, $cantidad = null, $priceTechnique, $newPriceTechnique = null, $newDescription = null, $imageSelected;
+    public $tecnica = null, $colores = 1, $operacion = null, $utilidad = null, $entrega = null, $cantidad = null, $priceTechnique, $newPriceTechnique = null, $newDescription = null, $imageSelected;
 
     public $priceScales, $infoScales = [], $priceScalesComplete = [],  $cantidadEscala, $precioTecnicaEscala, $editScale = false, $itemEditScale = null;
 

@@ -2,7 +2,7 @@
 @section('title', $product->name)
 @section('content')
     <div class="container mx-auto max-w-7xl">
-        <div class="grid grid-cols-1 md:grid-cols-2 px-10 py-10 gap-y-10 gap-x-20">
+        <div class="grid grid-cols-1 md:grid-cols-2 px-10 gap-y-10 gap-x-20">
             @if ($product->precio_unico)
                 @php
                     $priceProduct = $product->price;
@@ -82,28 +82,41 @@
                                 clip-rule="evenodd" />
                         </svg>
                     </div> -->
-                <p class="text-3xl col-start-1 col-span-4 md:text-4xl hyphens-auto" style="margin-left: 22px;">
-                    <strong>{{ $product->name }}</strong>
+                <p class="text-3xl col-start-1 col-span-4 md:text-3xl hyphens-auto font-medium" style="margin-left: 22px;">
+                    {{ $product->name }}
                 </p>
-                <div class="col-start-1 col-span-5 mt-4 space-y-2 px-6">
-                    <p class="font-normal"> <strong>Precio Unitario: </strong>$
+                <div class="col-start-1 col-span-5 my-4 space-y-2 px-6">
+                    <p class="text-2xl">$
                         {{ $priceProduct }}</p>
-                    <p class="font-normal"><strong>Descripcion:</strong></p>
-                    <p class="font-normal">{{ $product->description }}</p>
+            
+                    <p class="font-normal text-base">{{ $product->description }}</p>
 
-                    <p class="font-normal"><strong>Stock:</strong> {{ $product->stock }} </p>
+                    <p class="flex flex-grow text-lg grid-cols-1 mt-2" style="margin-top: 20px;"><b>Informacion adicional</b></p>
+
+                    <p class="font-medium text-sm">STOCK: <b> {{ $product->stock }} </b></p>
 
                     @if (count($product->productCategories) > 0)
-                        <strong>Categorias</strong>
-                        {{ $product->productCategories[0]->category->family }}
+
+                        <p class="font-medium text-sm">CATEGORÍA: <b>{{ $product->productCategories[0]->category->family }} </b> </p>
+                       
+                        
                     @endif
-                    <p class="flex flex-grow text-lg grid-cols-1"><strong>Informacion de la cotizacion</strong></p>
+
+                    <p for="newTechnique" class=" text-sm"> 
+                        DÍAS DE ENTREGA:
+                        <b>10 días</b>
+                        
+                    </p>
+                    <p class="flex flex-grow text-lg grid-cols-1 mt-2" style="margin-top: 20px;"><b>Detalle cotización</b></p>
+
                     @livewire('formulario-de-cotizacion', ['product' => $product])
+
                 </div>
             </div>
+           
         </div>
     </div>
-
+ 
     <style>
         .product-small-img img {
             width: 4%;

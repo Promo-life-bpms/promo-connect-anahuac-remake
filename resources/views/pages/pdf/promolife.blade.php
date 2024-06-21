@@ -159,9 +159,9 @@
                         <th colspan="1">Precio total</th>
                     </tr>
                     <tr>
-                        <td colspan="1"> {{ $product->cantidad}} piezas</td>
-                        <td colspan="1"> {{ $product->precio_unitario * 1.2}} </td>
-                        <td colspan="1"> {{ $product->precio_total * 1.2 }}</td>
+                        <td colspan="1"> <b>{{ $product->cantidad}} piezas</b> </td>
+                        <td colspan="1"> <b> $ {{ number_format($product->precio_unitario,2) }}</b> </td>
+                        <td colspan="1"> <b> $ {{ number_format($product->precio_total, 2)  }}</b> </td>
                     </tr>
                 </table>
             <br>
