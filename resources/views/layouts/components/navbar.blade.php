@@ -388,7 +388,7 @@
             <div class="w-2/3 mx-5">
                 <div class="flex items-center justify-between ">
                     <a href="{{ route('catalogo')}}"><p class="text-white mt-5 font-bold">CATÁLOGO </p></a>
-                    <a href="{{ route('catalogo')}}"><p class="text-white mt-5 font-bold">MEJORES DESCUENTOS</p></a>
+
                     <a href="{{ route('catalogo')}}"><p class="text-white mt-5 font-bold">RECIÉN LLEGADO</p></a>
                     <a href="{{ route('catalogo')}}"><p class="text-white mt-5 font-bold">MEJOR CALIFICADO</p></a>
                 </div>
