@@ -129,7 +129,7 @@
 
     <div class="w-full bg-[#FF5900] h-auto md:h-16 py-4 md:py-0">
         <div class="flex flex-wrap md:flex-nowrap justify-between px-5 pt-5">
-            <div class="w-full md:w-2/3">
+            <div class="w-full md:w-3/12">
                 <div class="flex flex-wrap md:flex-nowrap items-center justify-between">
                     <a href="{{ route('catalogo') }}" class="w-full md:w-auto mb-2 md:mb-0">
                         <p class="text-white font-bold text-sm md:text-base text-center md:text-left">CATÁLOGO</p>
@@ -137,12 +137,9 @@
                     <a href="{{ route('catalogo') }}" class="w-full md:w-auto mb-2 md:mb-0">
                         <p class="text-white font-bold text-sm md:text-base text-center md:text-left">RECIÉN LLEGADO</p>
                     </a>
-                    <a href="{{ route('catalogo') }}" class="w-full md:w-auto">
-                        <p class="text-white font-bold text-sm md:text-base text-center md:text-left">MEJOR CALIFICADO</p>
-                    </a>
                 </div>
             </div>
-            <div class="w-full md:w-1/3 mt-2 md:mt-0">
+            <div class="w-full md:w-3/12 mt-2 md:mt-0">
                 <p class="text-white font-bold text-sm md:text-base text-center md:text-right">COMPRA <b class="text-black">$1,500</b> Y OBTÉN EL ENVÍO GRATIS</p>
             </div>
         </div>
