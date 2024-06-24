@@ -60,39 +60,34 @@
 
                                     <div class="separador mt-4"></div>
                                     <label class="block pb-2 text-gray-500 font-bold text-left mb-1 md:mb-0 pr-4" for="inline-password">
-                                        Área
+                                        Selecciona tu área
                                     </label>
                                    
                                     <div class="w-full mb-4">
                                         <select id="area" class="appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:bg-white focus:border-orange-500" name="area" required>
-                                            <option value="">Seleccione su tipo...</option>
-                                            <option value="Estudiante">Estudiante</option>
-                                            <option value="Académico">Académico</option>
+                                            <option value="APREU">APREU</option>
                                             <option value="Administrativo">Administrativo</option>
-                                            <option value="Personal de Mantenimiento">Personal de Mantenimiento</option>
-                                            <option value="Investigador">Investigador</option>
-                                            <option value="Bibliotecario">Bibliotecario</option>
-                                            <option value="Otros">Otros</option>
+                                            <option value="RecursosHumanos">Recursos Humanos</option>
+                                            <option value="SorteoAnáhuac">Sorteo Anáhuac</option>
+                                            <option value="Compras">Compras</option>
                                         </select>
-                                        
                                     </div>
 
                                     <div class="separador mt-4"></div>
                                     <label class="block pb-2 text-gray-500 font-bold text-left mb-1 md:mb-0 pr-4" for="inline-password">
-                                        Campus
+                                        Selecciona tu campus
                                     </label>
                                    
                                     <div class="w-full mb-4">
                                         <select id="campus" class="appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:bg-white focus:border-orange-500" name="campus" required>
-                                            <option value="">Seleccione su campus...</option>
-                                            <option value="Huixquilucan">Huixquilucan</option>
-                                            <option value="Sur">Sur</option>
-                                            <option value="Norte">Norte</option>
-                                            <option value="Querétaro">Querétaro</option>
-                                            <option value="Oaxaca">Oaxaca</option>
-                                            <option value="Mérida">Mérida</option>
-                                            <option value="Xalapa">Xalapa</option>
-                                            <option value="Cancún">Cancún</option>
+                                            <option value="UAMX"> UAMX (MÉXICO)</option>
+                                            <option value="IEST">IEST (TAMPICO)</option>
+                                            <option value="UAM"> UAM (MÉRIDA-MAYAB)</option>
+                                            <option value="UAX">UAX (VERACRUZ)</option>
+                                            <option value="UAC"> UAC (CANCÚN)</option>
+                                            <option value="UAO">UAO (OAXACA)</option>
+                                            <option value="UAP">UAP (PUEBLA)</option>
+                                            <option value="UAQ">UAQ (QUERÉTARO)</option>                                            
                                         </select>                                      
                                       
                                     </div>
