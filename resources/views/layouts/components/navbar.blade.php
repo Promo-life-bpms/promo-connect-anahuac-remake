@@ -13,29 +13,27 @@
             <div class="flex flex-wrap md:flex-nowrap justify-around">
 
                 @if (auth()->user())
+                <a href="/profile">
                     <div class="text-black mt-4 px-4">
                         <div class="flex">
-                            <button id="dropdownHoverButton" data-dropdown-toggle="dropdown"
-                                class="text-primary hover:text-primary focus:ring-4 focus:outline-none p-1 font-medium focus:rounded text-lg text-center inline-flex items-center"
-                                type="button">
+
                                 <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M5 21C5 17.134 8.13401 14 12 14C15.866 14 19 17.134 19 21M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="#FF5900" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
 
                                 <p class="ml-2 text-sm text-orange-500 font-semibold">{{ (explode(' ', auth()->user()->name)[0]) }}</p>
-
-                            </button>
-                            
                         </div>
                         
-                    </div>
+                    </div>       
+                </a>
+                    
                 @endif
                 
             
                 @role('buyers-manager')
                 
                 <a href="{{ route('administrador') }}"
-                    class="text-sm text-orange-500 font-semibold mt-5 px-4">Administrador</a>
+                    class="text-sm text-orange-500 font-semibold mt-4 px-4">Administrador</a>
             
                 @endrole
                 @role('seller')
@@ -47,21 +45,21 @@
                 @role('admin')
                     
                         <a href="{{ route('admin.dashboard') }}"
-                            class="text-lg text-orange-500 font-semibold mt-5 px-4">Administrador</a>
+                            class="text-lg text-orange-500 font-semibold mt-4 px-4">Administrador</a>
                 
                 @endrole
                 @role(['buyers-manager', 'buyer'])
                 
                         <a href="{{ route('misCotizaciones') }}"
-                            class="text-sm text-orange-500 font-semibold mt-5 px-4">
+                            class="text-sm text-orange-500 font-semibold mt-4 px-4">
                             Cotizaciones</a>
                     
                         <a href="{{ route('compras') }}"
-                            class="text-sm text-orange-500 font-semibold mt-5 px-4">
+                            class="text-sm text-orange-500 font-semibold mt-4 px-4">
                             Compras</a>
                     
                         <a href="{{ route('muestras') }}"
-                            class="text-sm text-orange-500 font-semibold mt-5 px-4">
+                            class="text-sm text-orange-500 font-semibold mt-4 px-4">
                             Muestras</a>
                 
                 @endrole
@@ -70,22 +68,22 @@
                 
                 
                         <a href="{{ route('seller.content') }}"
-                        class="text-sm text-orange-500 font-semibold mt-5 px-4">Banners</a>
+                        class="text-sm text-orange-500 font-semibold mt-4 px-4">Banners</a>
                     
                         <a href="{{ route('seller.compradores') }}"
-                        class="text-sm text-orange-500 font-semibold mt-5 px-4">Compradores</a>
+                        class="text-sm text-orange-500 font-semibold mt-4 px-4">Compradores</a>
                     
                         <a href="{{ route('seller.pedidos') }}"
-                        class="text-sm text-orange-500 font-semibold mt-5 px-4">Compras</a>
+                        class="text-sm text-orange-500 font-semibold mt-4 px-4">Compras</a>
                 
                         <a href="{{ route('seller.muestras') }}"
-                        class="text-sm text-orange-500 font-semibold mt-5 px-4">Muestras</a>
+                        class="text-sm text-orange-500 font-semibold mt-4 px-4">Muestras</a>
                     
                 
                 @endrole
                 
                 <button data-modal-target="popup-modal" data-modal-toggle="popup-modal"
-                    class="text-sm text-orange-500 font-semibold mt-3">Cerrar
+                    class="text-sm text-orange-500 font-semibold mt-4">Cerrar
                     Sesion</button>
 
                 <div class="flex">

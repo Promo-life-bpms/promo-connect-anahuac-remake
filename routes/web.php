@@ -12,6 +12,7 @@ use App\Http\Controllers\ImageProxyController;
 use App\Http\Controllers\SellerController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\NotificacionesController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterUserController;
 use App\Http\Controllers\ShoppingController;
 use App\Http\Controllers\TemporalImageUrlController;
@@ -117,5 +118,10 @@ Route::middleware(['auth'])->group(function () {
 
     Route::post('/export/user', [ExportDataController::class, 'exportUser'])->name('exportUser');
     Route::post('/shopping/rate', [ShoppingController::class, 'shoppingRate'])->name('shoppingRate');
+
+
+    Route::get('/profile', [ProfileController::class, 'show'])->name('profile.showw');
+    Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+
 
 });
