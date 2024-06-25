@@ -27,9 +27,9 @@
             @endrole
 
             @role(['buyers-manager', 'buyer'])
-                <a href="{{ route('misCotizaciones') }}" class="text-sm text-orange-500 font-semibold mt-4 px-4"> Cotizaciones</a>
-                <a href="{{ route('compras') }}" class="text-sm text-orange-500 font-semibold mt-4 px-4"> Compras</a>
-                <a href="{{ route('muestras') }}" class="text-sm text-orange-500 font-semibold mt-4 px-4">Muestras</a> 
+                <a href="{{ route('misCotizaciones') }}" class="text-sm text-orange-500 font-semibold mt-4 px-4"> Compras</a>
+                <!-- <a href="{{ route('compras') }}" class="text-sm text-orange-500 font-semibold mt-4 px-4"> Compras</a>
+                <a href="{{ route('muestras') }}" class="text-sm text-orange-500 font-semibold mt-4 px-4">Muestras</a>  -->
             @endrole
 
             @role('seller')
@@ -100,9 +100,9 @@
             @endrole
 
             @role(['buyers-manager', 'buyer'])
-                <a href="{{ route('misCotizaciones') }}" class="text-sm text-orange-500 font-semibold mt-4 px-4"> Cotizaciones</a>
-                <a href="{{ route('compras') }}" class="text-sm text-orange-500 font-semibold mt-4 px-4"> Compras</a>
-                <a href="{{ route('muestras') }}" class="text-sm text-orange-500 font-semibold mt-4 px-4">Muestras</a> 
+                <a href="{{ route('misCotizaciones') }}" class="text-sm text-orange-500 font-semibold mt-4 px-4"> Compras</a>
+        <!--         <a href="{{ route('compras') }}" class="text-sm text-orange-500 font-semibold mt-4 px-4"> Compras</a>
+                <a href="{{ route('muestras') }}" class="text-sm text-orange-500 font-semibold mt-4 px-4">Muestras</a>  -->
             @endrole
 
             @role('seller')
