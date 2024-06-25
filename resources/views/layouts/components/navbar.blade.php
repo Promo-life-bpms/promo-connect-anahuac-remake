@@ -66,13 +66,16 @@
     </div>
 
     <!-- Menú hamburguesa para dispositivos móviles-->
-    <div class="md:hidden flex justify-end items-center h-16 bg-white text-white">
+    <div class="md:hidden flex justify-between items-center h-16 bg-white text-white px-4 shadow-md">
+        <a href="{{ route('index') }}" class="flex items-center">
+            <img src="{{ asset('img/Astore.png') }}" alt="Logo" class="p-2" style="width: 200px;">
+        </a>
         <button id="menu-toggle" class="px-4 py-2 focus:outline-none">
             <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M4 18L20 18" stroke="#FF5900" stroke-width="2" stroke-linecap="round"/>
                 <path d="M4 12L20 12" stroke="#FF5900" stroke-width="2" stroke-linecap="round"/>
                 <path d="M4 6L20 6" stroke="#FF5900" stroke-width="2" stroke-linecap="round"/>
-                </svg>
+            </svg>
         </button>
     </div>
 

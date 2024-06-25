@@ -27,31 +27,34 @@
 </head>
 
 <body class="h-screen" style="margin-top:70px;">
-    <div class="min-h-full flex flex-col justify-between">  
+    <div class="min-h-full flex flex-col justify-between" style="width: 100%; !important">  
         <div class="w-full bg-white">
             @include('layouts.components.navbar')
         </div>
-        <div class="flex-grow w-full" style="margin-top:102px;">
+        <div class="w-full mt-0 md:mt-[102px]">
             @yield('content')
         </div>
         <div class="py-5 w-full bg-white" >
             
-            <div class="w-full flex justify-between items-center text-primary mt-4 ">
-                <div>
-                    <p class="ml-4 mr-4 text-xl font-bold">CONTACTO: </p>
-                    <p class="ml-4 mr-4 text-lg">Telefono: 55 62 69 00 17</p>
-                    <p class="ml-4 mr-4 text-lg">Correo: ventas@promolife.com.mx</p>
+            <div class="w-full grid grid-cols-1 sm:grid-cols-3 gap-4 justify-items-center items-center text-primary mt-4">
 
-                    <p class="ml-4 mr-4 text-xl font-bold mt-4">Redes Sociales:</p>
+                <div class="w-full">
+                    <div class="mx-4 sm:mx-auto">
+                        <p class="ml-2 sm:ml-4 mr-2 sm:mr-4 text-base sm:text-xl font-bold">CONTACTO:</p>
+                        <p class="ml-2 sm:ml-4 mr-2 sm:mr-4 text-sm sm:text-lg">Teléfono: 55 62 69 00 17</p>
+                        <p class="ml-2 sm:ml-4 mr-2 sm:mr-4 text-sm sm:text-lg">Correo: ventas@promolife.com.mx</p>
+                        <p class="ml-2 mt-4 sm:ml-4 mr-2 sm:mr-4 text-base sm:text-xl font-bold">Redes Sociales:</p>
+
+                    </div>
                     <div class="flex ml-4 ">
                         <a href="https://www.facebook.com/share/JdyjheHUxRn8YySp/?mibextid=LQQJ4d" target="__blank">
-                            <svg fill="#FF5900" width="50px" height="50px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <svg fill="#FF5900" class="w-10 h-10 sm:w-12 sm:h-12"viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M12 2.03998C6.5 2.03998 2 6.52998 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.84998C10.44 7.33998 11.93 5.95998 14.22 5.95998C15.31 5.95998 16.45 6.14998 16.45 6.14998V8.61998H15.19C13.95 8.61998 13.56 9.38998 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96C15.9164 21.5878 18.0622 20.3855 19.6099 18.57C21.1576 16.7546 22.0054 14.4456 22 12.06C22 6.52998 17.5 2.03998 12 2.03998Z"/>
                             </svg>
                         </a>
                         
                         <a href="https://www.instagram.com/redanahuac?igsh=cDQxeG1hMmtjeXV4" class="ml-2" target="__blank">
-                            <svg width="50px" height="50px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                            <svg class="w-10 h-10 sm:w-12 sm:h-12" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
                                 <g fill="none" fill-rule="evenodd">
                                     <path d="m0 0h32v32h-32z"/>
                                     <path d="m17.0830929.03277248c8.1190907 0 14.7619831 6.64289236 14.7619831 14.76198302v2.3064326c0 8.1190906-6.6429288 14.761983-14.7619831 14.761983h-2.3064325c-8.11909069 0-14.76198306-6.6428924-14.76198306-14.761983v-2.3064326c0-8.11909066 6.64289237-14.76198302 14.76198306-14.76198302zm-.8630324 8.0002641-.2053832-.0002641c-1.7102378 0-3.4204757.05652851-3.4204757.05652851-2.4979736 0-4.52299562 2.02501761-4.52299562 4.52298561 0 0-.05191606 1.4685349-.05624239 3.0447858l-.00028625.2060969c0 1.7648596.05652864 3.590089.05652864 3.5900891 0 2.497968 2.02502202 4.5229856 4.52299562 4.5229856 0 0 1.5990132.0565285 3.2508899.0565285 1.7648634 0 3.6466255-.0565285 3.6466255-.0565285 2.4979736 0 4.4664317-1.9684539 4.4664317-4.4664219 0 0 .0565286-1.8046833.0565286-3.5335605l-.0010281-.4057303c-.0076601-1.5511586-.0555357-3.0148084-.0555357-3.0148084 0-2.4979681-1.9684582-4.46642191-4.4664317-4.46642191 0 0-1.6282521-.05209668-3.2716213-.05626441zm-.2053831 1.43969747c1.4024317 0 3.2005639.04637875 3.2005638.04637875 2.0483524 0 3.3130573 1.2647021 3.3130573 3.31305 0 0 .0463789 1.7674322.0463789 3.1541781 0 1.4176885-.0463789 3.2469355-.0463789 3.2469355 0 2.048348-1.2647049 3.31305-3.3130573 3.31305 0 0-1.5901757.0389711-2.9699093.0454662l-.3697206.0009126c-1.3545375 0-3.0049692-.0463788-3.0049692-.0463788-2.0483172 0-3.36958592-1.321301-3.36958592-3.3695785 0 0-.04637885-1.8359078-.04637885-3.2830941 0-1.3545344.04637885-3.061491.04637885-3.061491 0-2.0483479 1.32130402-3.31305 3.36958592-3.31305 0 0 1.7416035-.04637875 3.1440353-.04637875zm-.0000353 2.46195055c-2.2632951 0-4.0980441 1.8347448-4.0980441 4.098035s1.8347489 4.098035 4.0980441 4.098035 4.0980441-1.8347448 4.0980441-4.098035c0-2.2632901-1.8347489-4.098035-4.0980441-4.098035zm0 1.4313625c1.4727754 0 2.6666784 1.1939004 2.6666784 2.6666725s-1.193903 2.6666726-2.6666784 2.6666726c-1.4727401 0-2.6666784-1.1939005-2.6666784-2.6666726s1.1939031-2.6666725 2.6666784-2.6666725zm4.2941322-2.5685935c-.5468547 0-.9902027.4455321-.9902027.9950991 0 .5495671.443348.9950639.9902027.9950639.5468546 0 .9901674-.4454968.9901674-.9950639 0-.5496023-.4433128-.9950991-.9901674-.9950991z" fill="#FF5900" fill-rule="nonzero"/>
@@ -60,7 +63,7 @@
                         </a>
                        
                         <a href="https://x.com/redanahuac?s=11&t=cW5OMwBFHs0GWrKiGBxmpQ" class="ml-3" target="__blank">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 150" width="50" height="50">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 150" class="w-10 h-10 sm:w-12 sm:h-12">
                                 <path d="M67 .55C40.648 3.3 17.102 20.649 6.398 45.2-.5 61.05-1.648 79.3 3.25 96.101c6.05 20.949 21.7 38.648 41.95 47.5 15.85 6.898 34.1 8.046 50.902 3.148 25.148-7.25 44.949-27.898 51.449-53.55C157.699 53 132.8 11.897 92.5 2.3 83.648 .2 75.852 -.351 67 .55ZM68 47c6.398 8.5 11.8 15.5 12 15.5.2 0 6.852-7 14.7-15.5l14.35-15.5h8.15l-1.75 1.852c-1 1.046-7.5 8.097-14.45 15.648-6.95 7.55-13.75 14.898-15.102 16.25L83.5 67.8l18.75 24.95c10.3 13.75 18.75 25.148 18.75 25.352 0 .25-6.148.398-13.602.398l-13.648-.05-12.7-17C72.3 89.7 68.2 84.647 67.8 84.95c-.3.25-7.402 7.902-15.8 17L36.75 118.5h-3.852c-2.148 0-3.898-.102-3.898-.25 0-.148 7.95-8.852 17.648-19.3 9.653-10.45 17.653-19.2 17.75-19.348C64.45 79.398 56.5 68.55 46.75 55.5 37 42.5 29 31.75 29 31.648c0-.097 6.148-.148 13.7-.148h13.698Zm0 0" style="stroke:none;fill-rule:nonzero;fill:#FF5900;fill-opacity:1"/>
                                 <path d="M41.352 38.2c.199.35 12.796 17.25 27.898 37.448l27.5 36.801 6.148.051c3.801 0 6.102-.2 6-.5-.046-.25-12.597-17.148-27.796-37.5l-27.704-37H47.2c-5.148 0-6.199.102-5.847.7Zm0 0" style="stroke:none;fill-rule:nonzero;fill:#FF5900;fill-opacity:1"/>
                               </svg>                    
@@ -71,11 +74,11 @@
                     </div>
 
                     <div class="absolute flex h-1 bg-primary ml-4 mr-4 mt-4 overflow-hidden" style="width: 98%;"></div>
-                    <p class="ml-4 mr-4 mt-6 text-black">Términos y condiciones</p>
+                   
 
                 </div>
                 <div>
-                    <img src="{{ asset('img/RUA.png') }}" alt="" style="width: 260px;" class="-mt-10">
+                    <img src="{{ asset('img/RUA.png') }}" alt="" style="width: 260px; margin-top:20px;" >
                 </div>
                 <div class="flex flex-col items-end">
                     <a href="#" class="ml-4 mr-8" onclick="scrollToFirstSection()">
@@ -95,8 +98,8 @@
                     </script>
                     <img src="{{asset('img/anahuac.png') }}" alt="logo" style="height:60px;" class="ml-4 mr-8">
                     <p class="ml-4 mr-8 mt-2">Politicas de privacidad / Garantía PromoLife</p>
-                    <p class="text-black ml-4 mr-8 mt-8 ">© Copyright 2023 Promo Life ®</p>
-                    <div class="flex ml-4 mr-4 mt-4">
+                    <p class="text-black ml-4 mr-8 mt-8 ">© Copyright 2024 Promo Life ®</p>
+                    <div class="flex ml-4 mr-4 mt-10">
                         <p  class="text-black mr-2">Formas de pago</p> 
                         <img src="{{asset('img/pago1.png') }}" alt="tarjeta1" style="width: 30px; height:20px;" class="mt-2 ml-1">
                         <img src="{{asset('img/pago2.png') }}" alt="tarjeta2" style="width: 30px; height:20px;" class="mt-2 ml-1">
