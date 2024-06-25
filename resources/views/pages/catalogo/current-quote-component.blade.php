@@ -22,63 +22,28 @@
                 @endphp
                 @foreach ($cotizacionActual as $quote)
                     <div
-                        class="flex justify-between border-t last:border-b border-gray-800 py-3 px-5 gap-2 items-center">
+                        class="flex justify-between border-t last:border-b border-gray-800 py-3 gap-2 items-center">
                         <div class="flex items-center">
-                            
                             <div>
                                 <img src="{{ $quote->images_selected ?: ($quote->product->firstImage ? $quote->product->firstImage->image_url : asset('img/default.jpg')) }}"
-                                    alt="" style="width: 100px; height: 100px; object-fit: contain; margin-right:20px;">
+                                    alt="" style="width: 100px; height: 100px; object-fit: contain; ">
                             </div>
                         </div>
                         <div class="flex-grow space-y-3">
-                            <p class="font-bold text-lg">{{ $quote->product->name }}</p>
+                            <p class="font-bold text-sm sm:text-base">{{ $quote->product->name }}</p>
                             <div class="flex items-center space-x-3">
-                                <p>Cantidad: <strong>{{ $quote->cantidad }}</strong> <span>PZ</span></p>
-                                {{--        <input type="number" class="rounded-md border-gray-700 border text-center p-1 w-20"
-                                    min="1" value="{{ $quote->cantidad }}"> --}}
+                                <p class="text-sm sm:text-base">Cantidad: <strong>{{ $quote->cantidad }}</strong> <span>PZ</span></p>
                             </div>
-                            {{-- <p>Costo de Personalizacion: <span class="font-bold"> $ {{ $quote->price_technique }}
-                                    c/u</span> </p> --}}
-                        </div>
-                        <div class="h-full text-center pr-20">
-                            @if ($quote->logo)
-                                <!-- Modal toggle -->
-                                <a data-modal-target="default-modal-{{$quote->id}}" data-modal-toggle="default-modal-{{$quote->id}}"  type="button">
-                                    <div class="transition-transform transform-gpu hover:scale-105 cursor-pointer">
-                                        <img src="{{ asset('storage/logos/' . $quote->logo) }}" class="h-20 w-auto">
-                                    </div>
-                                </a>
-
-                                <!-- Main modal -->
-                                <div id="default-modal-{{$quote->id}}" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                                    <div class="relative p-4 w-full max-w-2xl max-h-full">
-                                        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                                            <div class="p-4 md:p-5 flex items-center justify-center">
-                                                <img src="{{ asset('storage/logos/' . $quote->logo) }}" class="h-100 w-auto">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @else
-                                <p class="text-center">Sin logo</p>
-                            @endif
-                        </div>
-                        <div class="flex flex-col items-end space-y-2">
-
-                           {{--  <!-- @php
-                                $precioTotal = round(($quote->precio_total / ((100 - config('settings.utility_aditional')) / 100)) * 1.16, 2);
-                            @endphp -->
-
-                            @php
-                                $precioTotal = ($quote->precio_total);
-                            @endphp --}}
-
                             @php
                                 $precioTotal = $quote->precio_total;
                             @endphp
-                            <p class="font-bold text-lg">$ {{ number_format($precioTotal, 2, '.', ',') }} + IVA</p>
+                            <p class="font-bold text-sm sm:text-base">$ {{ number_format($precioTotal, 2, '.', ',') }} + IVA</p>
+                        </div>
+                    
+                        <div class="flex flex-col items-end space-y-2">
+                         
                                 <!-- Modal toggle -->
-                                <button data-modal-target="edit-modal-{{$quote->id}}" data-modal-toggle="edit-modal-{{$quote->id}}" class=" bg-primary text-white block w-full text-center text-sm underline rounded-sm font-semibold py-2 px-4" type="button">
+                                <button data-modal-target="edit-modal-{{$quote->id}}" data-modal-toggle="edit-modal-{{$quote->id}}" class=" bg-primary text-white block w-full text-center text-sm sm:text-base underline rounded-sm font-semibold py-2 px-4" type="button">
                                     Editar cotización
                                 </button>
 

@@ -1,5 +1,5 @@
-<div class="w-full">
-    <div class="w-full px-20">
+<div class="w-full px-5 sm:px-20">
+
       <div class="max-w-7xl">
         <div class="font-semibold text-slate-700 py-8 flex items-center space-x-2">
             <a class="text-secondary" href="/">Inicio</a>
@@ -14,14 +14,15 @@
         </div>
       @endif
       
-        <table class="w-full table-auto">
-            <thead class="text-sm">
-              <tr class="bg-primary text-white">
+      <div class="w-full overflow-x-auto">
+        <table class="table-auto">
+            <thead>
+                <tr class="bg-primary text-white text-sm sm:text-xs">
                 <th style="width: 10%;" class="p-2">#</th>
                 <th style="width: 10%;">Imagen</th>
-                <th style="width: 10%;">Producto</th>
                 <th style="width: 10%;">Usuario</th>
-                <th style="width: 20%;">Descripción</th>
+                <th style="width: 15%;">Producto</th>
+                <th class="hidden sm:table-cell" style="width: 15%;">Descripción</th>
                 <th style="width: 10%;">Cantidad</th>
                 <th style="width: 10%;">Total</th>
                 <th style="width: 10%;">Fecha de pedido</th>
@@ -40,7 +41,7 @@
                   $productImage = $productDB->firstImage;
                   $shoppingInformation = \App\Models\ShoppingInformation::where('id',$shopping->id)->get()->first();
                 @endphp
-                <tr class="border border-gray-300">
+                <tr class="border text-sm sm:text-sm">
                     <td class="text-center py-5 px-6">{{ $shoppingInformation->information }}</td>
                     <td class="text-center">
                       @if($product['logo'] != '')
@@ -57,8 +58,8 @@
                     <td class="text-center">
                       {{ $product['name'] }}
                     </td>
-                    <td>
-                      {{ $product['description'] }}
+                    <td class="hidden sm:table-cell">
+                      <p>{{ $product['description'] }}</p>
                     </td>
                     <td class="text-center"> 
                       {{ $shopping->products[0]->cantidad }}
@@ -262,6 +263,6 @@
           {{ $shoppings->links() }}
         </div>
 
-    </div>
+   
 
 </div>

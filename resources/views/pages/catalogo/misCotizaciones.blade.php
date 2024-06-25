@@ -33,36 +33,30 @@
             <a class="text-secondary" href="#">Mis cotizaciones</a>
         </div>
 
-        <div class="flex">
-            <div class="w-1/2 mr-8">
+        <div class="flex flex-col sm:flex-row">
+            <div class="w-full sm:w-1/2 mb-4 sm:mr-8">
                 <div class="bg-white p-4 rounded shadow">
-                    <h2 class="text-xl font-bold mb-2">N° de cotización:</h2>
-                    <p class="text-bold text-4xl">{{count($quotes) }}</p>
+                    <h2 class="text-lg sm:text-sm l font-bold mb-2">N° de cotización:</h2>
+                    <p class="text-lg sm:text-sm font-bold">{{ count($quotes) }}</p>
                 </div>
             </div>
         
-            <div class="w-1/2">
+            <div class="w-full sm:w-1/2">
                 <div class="bg-white p-4 rounded shadow">
-                    <h2 class="text-xl font-bold mb-2">Total: </h2>
-                    <p class="text-bold text-4xl">$ {{ number_format($totalGeneral, 2, '.', ',') }}</p>
+                    <h2 class="text-lg sm:text-sm  font-bold mb-2">Total:</h2>
+                    <p class="text-lg sm:text-sm font-bold">$ {{ number_format($totalGeneral, 2, '.', ',') }}</p>
                 </div>
             </div>
-        
-            <div class="w-1/2">
-                
-            </div>
-        
-            <div class="w-1/2">
-                
-            </div>
+            <div class="w-full sm:w-1/2"></div>
+            <div class="w-full sm:w-1/2"></div>
         </div>
 
 
         <br>
-        <div class="w-full">
+        <div class="w-full overflow-x-auto">
             <table class="table-auto">
                 <thead>
-                    <tr class="bg-primary text-white text-sm">
+                    <tr class="bg-primary text-white text-sm sm:text-xs">
                         <th style="width:5%; padding:10px;">Cotizacion</th>
                         <th style="width:5%;">Logo</th>
                         <th style="width:10%;">Producto</th>
@@ -94,7 +88,7 @@
 
                         @endphp
                         
-                        <tr class="border text-sm">
+                        <tr class="border text-sm sm:text-sm">
                             <td class="text-center text-"><b>SQ-{{$quote->id}}</b></td>
                             <td class="text-center">
                                 @if($quote->logo == null || $quote->logo == '')

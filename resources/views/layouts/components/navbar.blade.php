@@ -113,9 +113,9 @@
             @endrole
 
 
-            <a href="{{ route('misCotizaciones') }}" class="text-sm text-orange-500 font-semibold mt-4 px-4"> Catálogo</a>
+            <a href="/catalogo" class="text-sm text-orange-500 font-semibold mt-4 px-4"> Catálogo</a>
 
-            <a href="{{ route('misCotizaciones') }}" class="text-sm text-orange-500 font-semibold mt-4 px-4"> Carrito</a>
+            <a href="/carrito" class="text-sm text-orange-500 font-semibold mt-4 px-4"> Carrito</a>
 
 
             <button data-modal-target="popup-modal" data-modal-toggle="popup-modal" class="text-sm text-orange-500 font-semibold mt-4 ml-4">Cerrar Sesion</button>
