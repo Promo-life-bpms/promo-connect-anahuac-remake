@@ -87,7 +87,7 @@
                 <th style="width: 10%;">Cantidad</th>
                 <th style="width: 10%;">Total</th>
                 <th style="width: 10%;">Fecha de pedido</th>
-                <th style="width: 10%;">Fecha de entrega</th>
+                <th style="width: 10%;">Entrega</th>
                 <th style="width: 10%;">Status</th>
                 @role('seller')
                   <th style="width: 5%;"></th>   
@@ -138,15 +138,45 @@
                     <td class="text-center">
                       {{ $shopping->products[0]->created_at->format('d-m-Y') }}
                     </td>
-                    <td class="text-center">
-                      @if($shopping->status == 3)
+                    <td class="text-center text-xs">
+
+                      @switch($shopping->status)
+                          @case(0)
+                                <span class="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">En espera de aprobación</span>
+                              @break
+                          @case(1)
+                              <span class="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">
+                                Fecha Estimada:
+                                <br>
+                                {{ $shopping->products[0]->updated_at->addDays(10)->format('d-m-Y') }}
+                              </span>
+                              @break
+                          @case(2)
+                            <span class="inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-600 ring-1 ring-inset ring-red-500/10">
+                              No se puede procesar
+                            </span>
+                            @break
+                          @case(3)
+                            <span class="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-600 ring-1 ring-inset ring-blue-500/10">
+                              En proceso de envío
+                            </span>
+                            @break
+                          @case(4)
+                            <span class="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-600 ring-1 ring-inset ring-green-500/10">
+                              Entregada
+                            </span>
+                            @break
+                          @default
+                      @endswitch
+
+                      {{-- @if($shopping->status == 1)
                         <p>Entregado el: </p>
                         {{ $shopping->products[0]->updated_at->format('d-m-Y') }}
                       @else
                         Estimada:
                         <br>
                         {{ $shopping->products[0]->updated_at->addDays(10)->format('d-m-Y') }}
-                      @endif
+                      @endif --}}
                      
                     </td>
                     <td class="flex flex-col items-center justify-center mt-10">
