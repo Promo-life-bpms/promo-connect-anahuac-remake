@@ -104,7 +104,7 @@
         <!--         <a href="{{ route('compras') }}" class="text-sm text-orange-500 font-semibold mt-4 px-4"> Compras</a>
                 <a href="{{ route('muestras') }}" class="text-sm text-orange-500 font-semibold mt-4 px-4">Muestras</a>  -->
             @endrole
-
+ 
             @role('seller')
                 <a href="{{ route('seller.content') }}" class="text-sm text-orange-500 font-semibold mt-4 px-4">Banners</a>
                 <a href="{{ route('seller.compradores') }}" class="text-sm text-orange-500 font-semibold mt-4 px-4">Compradores</a>

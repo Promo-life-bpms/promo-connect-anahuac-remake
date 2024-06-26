@@ -2,7 +2,7 @@
 
     @if(session('message'))
         <div class="bg-green-500 text-white p-4 mb-4">
-            <p class="text-lg">¡Éxito! Se ha realizado la cotización de tu producto correctamente, ingresa a la sección <b>MIS COTIZACIONES</b> .</p>
+            <p class="text-lg">¡Éxito! Se ha realizado la cotización de tu producto correctamente, ingresa a la sección <b>MIS COMPRAS</b> .</p>
         </div>
     @endif
    
