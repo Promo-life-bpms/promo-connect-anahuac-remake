@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\CurrentQuoteDetails;
 use App\Models\Quote;
 use App\Models\QuoteTechniques;
+use App\Models\Shopping;
 use App\Models\SpecialRequest;
 use App\Models\User;
 use App\Notifications\SendEmailCotizationNotification;
@@ -66,7 +67,7 @@ class CotizacionController extends Controller
     {
 
         $date =  Carbon::now()->format("d/m/Y");
-        $quotes = Quote::where('id',$request->id)->get();
+        $quotes = Shopping::where('id',$request->id)->get();
 
         $user = User::where('id', $quotes[0]->user_id)->get()->first();
 

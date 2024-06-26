@@ -90,17 +90,17 @@
                                     class=" bg-[#662D91] text-white block w-full text-center text-sm underline rounded-sm font-semibold py-1 px-4">
                                     Ver Proceso
                                 </a>
-                                <button
+                                {{-- <button
                                     class="block w-full border-primary hover:border-primary-dark text-center rounded-sm font-semibold py-1 px-4"
                                     onclick="solicitarMuestra({{ $quote->id }})">
                                     Solicitar Muestra
-                                </button>
+                                </button> --}}
                             @else
-                                <button
+                                {{-- <button
                                     class="block w-full border-2 border-primary hover:border-primary-dark text-center rounded-sm font-semibold py-1 px-4"
                                     onclick="solicitarMuestra({{ $quote->id }})">
                                     Solicitar Muestra
-                                </button>
+                                </button> --}}
                             @endif
                                 <button type="button" onclick='eliminar({{ $quote->id }})'
                                     class="block w-full text-center text-sm underline rounded-sm font-semibold py-1 px-4">

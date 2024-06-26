@@ -118,10 +118,10 @@ Route::middleware(['auth'])->group(function () {
 
     Route::post('/export/user', [ExportDataController::class, 'exportUser'])->name('exportUser');
     Route::post('/shopping/rate', [ShoppingController::class, 'shoppingRate'])->name('shoppingRate');
+    Route::post('/shoping/update', [ShoppingController::class, 'shoppingStore'])->name('shoppingStore');
 
 
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile.showw');
     Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
-
 
 });

@@ -270,7 +270,7 @@ class CurrentQuoteComponent extends Component
             }
 
             if($product){
-                $createQuote = new Quote(); 
+                $createQuote = new Shopping(); 
                 $createQuote->user_id = auth()->user()->id;
                 $createQuote->address_id = 1;
                 $createQuote->iva_by_item = 1;
@@ -279,13 +279,13 @@ class CurrentQuoteComponent extends Component
                 $createQuote->status = 0;
                 $createQuote->save();
     
-                $createQuoteDiscount = new QuoteDiscount();
+                $createQuoteDiscount = new ShoppingDiscount();
                 $createQuoteDiscount->discount = 0;
                 $createQuoteDiscount->type = 'Fijo';
                 $createQuoteDiscount->value = 0.00;
                 $createQuoteDiscount->save();
     
-                $createQuoteInformation = new QuoteInformation();
+                $createQuoteInformation = new ShoppingInformation();
                 $createQuoteInformation->name = 'Cliente';
                 $createQuoteInformation->email = 'email';
                 $createQuoteInformation->landline = '1';
@@ -298,7 +298,7 @@ class CurrentQuoteComponent extends Component
                 $createQuoteInformation->shelf_life = 10;
                 $createQuoteInformation->save();
     
-                $createQuoteProduct = new QuoteProducts();
+                $createQuoteProduct = new ShoppingProduct();
                 $createQuoteProduct->product = json_encode($product);
                 $createQuoteProduct->technique = json_encode(['price_technique' => $cotizacion->price_technique]);
                 $createQuoteProduct->prices_techniques = $cotizacion->price_technique;
@@ -309,14 +309,15 @@ class CurrentQuoteComponent extends Component
                 $createQuoteProduct->cantidad = $cotizacion->cantidad;
                 $createQuoteProduct->precio_unitario = $cotizacion->precio_unitario;
                 $createQuoteProduct->precio_total = $cotizacion->precio_total;
-                $createQuoteProduct->quote_by_scales = 0;
+                $createQuoteProduct->shopping_by_scales = 0;
                 $createQuoteProduct->scales_info = null;
+                $createQuoteProduct->shopping_id = $createQuote->id;
                 $createQuoteProduct->save();
     
-                $createQuoteUpdate = new QuoteUpdate();
-                $createQuoteUpdate->quote_id = $createQuote->id;
-                $createQuoteUpdate->quote_information_id = $createQuoteInformation->id;
-                $createQuoteUpdate->quote_discount_id = $createQuoteDiscount->id;
+                $createQuoteUpdate = new ShoppingUpdate();
+                $createQuoteUpdate->shopping_id = $createQuote->id;
+                $createQuoteUpdate->shopping_information_id = $createQuoteInformation->id;
+                $createQuoteUpdate->shopping_discount_id = $createQuoteDiscount->id;
                 $createQuoteUpdate->type = 'created';
                 $createQuoteUpdate->save();
 
@@ -333,15 +334,8 @@ class CurrentQuoteComponent extends Component
             } 
         }
         
-     /*    $pdf = \PDF::loadView('pages.pdf.cotizacionBH', ['date' =>$date, 'cotizacionActual'=>$cotizacionActual ]);
-        $pdf->setPaper('Letter', 'portrait');
-        return $pdf->stream("QS-1". '.pdf');  */
-        
-        $quotes = Quote::whereIn('id', $quoteCotizationNumber)->get();
-
-        /* $correoDestino = 'fsolano.fs69@gmail.com';
-        Notification::route('mail', $correoDestino)
-        ->notify(new SendEmailCotizationNotification($date, $quotes )); */
+        $quotes = Shopping::whereIn('id', $quoteCotizationNumber)->get();
+   
         $user = auth()->user();
 
         $user = User::where('id', $quotes[0]->user_id)->get()->first();

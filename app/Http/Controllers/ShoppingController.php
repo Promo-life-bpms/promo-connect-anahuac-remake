@@ -16,4 +16,13 @@ class ShoppingController extends Controller
        
         return back()->with('message', '¡Evaluación completada, muchas gracias!');
     }
+
+    public function shoppingStore(Request $request) {
+        DB::table('shoppings')->where('id', $request->id)->update([
+            'status' => $request->status
+        ]);
+
+        return back()->with('message', 'Pedido actualizado correctamente');
+
+    }
 }

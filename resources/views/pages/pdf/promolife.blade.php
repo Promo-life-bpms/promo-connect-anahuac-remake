@@ -63,9 +63,9 @@
             
             @php
                 
-                $quoteTechnique = optional(\App\Models\QuoteTechniques::where('quotes_id', $quote->id)->latest()->first());
+                $quoteTechnique = optional(\App\Models\ShoppingTechnique::where('shopping_id', $quote->id)->latest()->first());
 
-                $product = optional(\App\Models\QuoteProducts::where('id', $quote->id)->latest()->first());
+                $product = optional(\App\Models\ShoppingProduct::where('id', $quote->id)->latest()->first());
 
                 $productData = json_decode($product->product);
 
@@ -184,8 +184,7 @@
             <li>El tiempo de entrega empieza a correr una vez recibida la Orden de Compra y autorizada la muestra física
                 o
                 virtual a solicitud del cliente.</li>
-            <li>Vigencia de la cotización {{ $quote->latestQuotesUpdate->quotesInformation->shelf_life ?: 5 }} días
-                {{ $quote->type_days == 0 ? 'hábiles' : 'naturales' }}.</li>
+            <li>Vigencia de la cotización 5 día hábiles.</li>
             <li>Producto cotizado de fabricación nacional o importación puede afinarse la fecha de entrega previo a la
                 emisión
                 de Orden de Compra.</li>

@@ -26,17 +26,19 @@
                 <a href="{{ route('admin.dashboard') }}" class="text-lg text-orange-500 font-semibold mt-4 px-4">Administrador</a>
             @endrole
 
-            @role(['buyers-manager', 'buyer'])
-                <a href="{{ route('misCotizaciones') }}" class="text-sm text-orange-500 font-semibold mt-4 px-4"> Compras</a>
-                <!-- <a href="{{ route('compras') }}" class="text-sm text-orange-500 font-semibold mt-4 px-4"> Compras</a>
-                <a href="{{ route('muestras') }}" class="text-sm text-orange-500 font-semibold mt-4 px-4">Muestras</a>  -->
+            @role([ 'buyer'])
+                <a href="{{ route('compras') }}" class="text-sm text-orange-500 font-semibold mt-4 px-4">Mis Compras</a>
+            @endrole
+
+            @role(['buyers-manager'])
+                <a href="{{ route('compras') }}" class="text-sm text-orange-500 font-semibold mt-4 px-4">Solicitudes de Compra</a>
             @endrole
 
             @role('seller')
                 <a href="{{ route('seller.content') }}" class="text-sm text-orange-500 font-semibold mt-4 px-4">Banners</a>
                 <a href="{{ route('seller.compradores') }}" class="text-sm text-orange-500 font-semibold mt-4 px-4">Compradores</a>
                 <a href="{{ route('seller.pedidos') }}" class="text-sm text-orange-500 font-semibold mt-4 px-4">Compras</a>
-                <a href="{{ route('seller.muestras') }}" class="text-sm text-orange-500 font-semibold mt-4 px-4">Muestras</a>
+                {{-- <a href="{{ route('seller.muestras') }}" class="text-sm text-orange-500 font-semibold mt-4 px-4">Muestras</a> --}}
             @endrole
 
             <button data-modal-target="popup-modal" data-modal-toggle="popup-modal" class="text-sm text-orange-500 font-semibold mt-4">Cerrar Sesion</button>
@@ -99,17 +101,19 @@
                 <a href="{{ route('admin.dashboard') }}" class="text-lg text-orange-500 font-semibold mt-4 px-4">Administrador</a>
             @endrole
 
-            @role(['buyers-manager', 'buyer'])
-                <a href="{{ route('misCotizaciones') }}" class="text-sm text-orange-500 font-semibold mt-4 px-4"> Compras</a>
-        <!--         <a href="{{ route('compras') }}" class="text-sm text-orange-500 font-semibold mt-4 px-4"> Compras</a>
-                <a href="{{ route('muestras') }}" class="text-sm text-orange-500 font-semibold mt-4 px-4">Muestras</a>  -->
+            @role([ 'buyer'])
+                <a href="{{ route('compras') }}" class="text-sm text-orange-500 font-semibold mt-4 px-4">Mis Compras</a>
+            @endrole
+
+            @role(['buyers-manager'])
+                <a href="{{ route('compras') }}" class="text-sm text-orange-500 font-semibold mt-4 px-4">Solicitudes de Compra</a>
             @endrole
  
             @role('seller')
                 <a href="{{ route('seller.content') }}" class="text-sm text-orange-500 font-semibold mt-4 px-4">Banners</a>
                 <a href="{{ route('seller.compradores') }}" class="text-sm text-orange-500 font-semibold mt-4 px-4">Compradores</a>
                 <a href="{{ route('seller.pedidos') }}" class="text-sm text-orange-500 font-semibold mt-4 px-4">Compras</a>
-                <a href="{{ route('seller.muestras') }}" class="text-sm text-orange-500 font-semibold mt-4 px-4">Muestras</a>
+                {{-- <a href="{{ route('seller.muestras') }}" class="text-sm text-orange-500 font-semibold mt-4 px-4">Muestras</a> --}}
             @endrole
 
 

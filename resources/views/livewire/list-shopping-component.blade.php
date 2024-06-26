@@ -4,15 +4,77 @@
         <div class="font-semibold text-slate-700 py-8 flex items-center space-x-2">
             <a class="text-secondary" href="/">Inicio</a>
             <p class="text-secondary"> / </p>
-            <a class="text-secondary" href="#">Mis compras</a>
+            @role(['buyer'])
+              <a class="text-secondary" href="#">Mis compras</a>
+            @endrole
+            @role(['buyers-manager'])
+              <a class="text-secondary" href="#">Solicitudes de Compra</a>
+            @endrole
         </div>
       </div>
-
+      @php
+        //0 pendiente - 1 aprobada - 2 rechazada
+        $pending = 0;
+        $approved = 0;
+        $rejected = 0;
+      @endphp
+      @foreach ($shoppings  as $shopping)
+        @switch($shopping->status)
+            @case(0)
+                @php
+                  $pending = $pending  + 1;
+                @endphp
+                @break
+            @case(1)
+                @php
+                  $approved = $approved  + 1;
+                @endphp
+                @break
+            @case(2)
+                @php
+                $rejected = $rejected  + 1;
+                @endphp
+                @break
+            @default
+        @endswitch
+      @endforeach
       @if(session('message'))
         <div class="bg-green-500 text-white px-4 py-2 rounded-md my-4">
             {{ session('message') }}
         </div>
       @endif
+
+      <div class="flex flex-col sm:flex-row">
+        <div class="w-full sm:w-1/2 mb-4 sm:mr-8">
+            <div class="bg-white p-4 rounded shadow">
+                <h2 class="text-lg sm:text-sm l font-bold mb-2">Total de solicitudes</h2>
+                <p class="text-lg sm:text-sm font-bold">{{ count($shoppings)}}</p>
+            </div>
+        </div>
+    
+        <div class="w-full sm:w-1/2">
+            <div class="bg-white p-4 rounded shadow">
+                <h2 class="text-lg sm:text-sm  font-bold mb-2">Aprobadas</h2>
+                <p class="text-lg sm:text-sm font-bold">{{ $approved }}</p>
+            </div>
+        </div>
+
+        <div class="w-full sm:w-1/2">
+          <div class="bg-white p-4 rounded shadow">
+              <h2 class="text-lg sm:text-sm  font-bold mb-2">Pendientes</h2>
+              <p class="text-lg sm:text-sm font-bold">{{ $pending }}</p>
+          </div>
+        </div>
+
+        <div class="w-full sm:w-1/2">
+          <div class="bg-white p-4 rounded shadow">
+              <h2 class="text-lg sm:text-sm  font-bold mb-2">Rechazadas</h2>
+              <p class="text-lg sm:text-sm font-bold">{{ $rejected }}</p>
+          </div>
+        </div>
+
+    </div>
+
       
       <div class="w-full overflow-x-auto">
         <table class="table-auto">
@@ -22,7 +84,6 @@
                 <th style="width: 10%;">Imagen</th>
                 <th style="width: 10%;">Usuario</th>
                 <th style="width: 15%;">Producto</th>
-                <th class="hidden sm:table-cell" style="width: 15%;">Descripción</th>
                 <th style="width: 10%;">Cantidad</th>
                 <th style="width: 10%;">Total</th>
                 <th style="width: 10%;">Fecha de pedido</th>
@@ -42,7 +103,17 @@
                   $shoppingInformation = \App\Models\ShoppingInformation::where('id',$shopping->id)->get()->first();
                 @endphp
                 <tr class="border text-sm sm:text-sm">
-                    <td class="text-center py-5 px-6">{{ $shoppingInformation->information }}</td>
+                    <td class="text-center py-5 px-6">
+
+                      <form method="POST" action="{{ route('downloadPDF') }}">
+                        @csrf
+                        <input type="hidden" name="id" value="{{ $shopping->id }}">
+                        <button type="submit" class="w-full text-primary underline font-bold p-2 rounded text-sm">
+                          SQ-{{ $shopping->id }}</td>
+                        </button>
+                      </form>
+                      
+                      
                     <td class="text-center">
                       @if($product['logo'] != '')
                         <img src="/storage/logos/{{$product['logo'] }}" alt="" style="width: 100px;height:100px;object-fit: contain;">
@@ -57,9 +128,6 @@
                   </td>
                     <td class="text-center">
                       {{ $product['name'] }}
-                    </td>
-                    <td class="hidden sm:table-cell">
-                      <p>{{ $product['description'] }}</p>
                     </td>
                     <td class="text-center"> 
                       {{ $shopping->products[0]->cantidad }}
@@ -81,16 +149,16 @@
                       @endif
                      
                     </td>
-                    <td class="text-center">
+                    <td class="flex flex-col items-center justify-center mt-10">
                       @switch($shopping->status)
                         @case(0)
-                          <span class="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">En validación</span>
+                          <span class="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">Pendiente</span>
                             @break
                         @case(1)
-                          <span class="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">En proceso de compra</span>
+                          <span class="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-700/10">Aprobada</span>
                             @break
                         @case(2)
-                          <span class="inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-red-700/10">Error en número de compra</span>
+                          <span class="inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-700/10">Rechazada</span>
                             @break
                         @case(3)
                           <span class="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">Entregado</span>
@@ -186,7 +254,54 @@
                           @break
                         @default
                             
+
+                       
                       @endswitch
+                      @if($shopping->status == 0)
+                      @role(['buyers-manager'])
+                      <a class="text-secondary" href="#"></a>
+                        <button data-modal-target="update-status-{{$shopping->id}}" data-modal-toggle="update-status-{{$shopping->id}}" class="block text-white bg-primary hover:bg-oragen-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs px-2 py-1 text-center mt-2 " type="button">
+                          Cambiar status
+                        </button>
+
+                        <div id="update-status-{{$shopping->id}}" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                          <div class="relative p-4 w-full max-w-2xl max-h-full">
+                            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                <div class="flex items-center justify-between p-4 md:p-5 rounded-t dark:border-gray-600">
+                                    <h3 class="text-xl font-semibold text-gray-900">
+                                        Solicitud:  SQ-{{$shopping->id}}
+                                    </h3>
+                                    <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center" data-modal-hide="update-status-{{$shopping->id}}">
+                                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                        </svg>
+                                        <span class="sr-only">Close modal</span>
+                                    </button>
+                                </div>
+                                <form method="POST" action="{{ route('shoppingStore') }}">
+                                  @csrf
+                                  <div class="p-4 md:p-5 space-y-4">
+                                      <input type="text" name="id" id="" value="{{$shopping->id}}" hidden>
+                                      <label for="status" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left">Cambiar status</label>
+                                      <select id="status" name="status" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                        <option value="0">Pendiente</option>
+                                        <option value="1">Aprobado</option>
+                                        <option value="2">Rechazado</option>
+                                      </select>
+                              
+                                  </div>
+                                  <div class="flex items-center p-4 md:p-5 rounded-b">
+                                    <button data-modal-hide="update-status-{{$shopping->id}}" type="submit" class="text-white bg-primary hover:bg-oragen-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Guardar</button>
+                                    <button data-modal-hide="update-status-{{$shopping->id}}" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100">Cancelar</button>
+                                  </div>
+                                </form>
+                            </div>
+                          </div>
+
+                        </div>
+                    @endrole
+                      @endif
+                      
                       <br>
                       
 
