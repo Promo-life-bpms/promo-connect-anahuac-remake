@@ -1,4 +1,5 @@
-<div class="fixed top-0 left-0 right-0 z-50 bg-white" style="z-index: 20;">
+<div>
+    <div class="fixed top-0 left-0 right-0 z-50 bg-white" style="z-index: 20;">
 
     <!-- Menú para dispositivos de escritorio  -->
     <div class="hidden md:flex md:justify-between md:items-center md:h-20 bg-white text-white px-12">
@@ -156,9 +157,11 @@
             </div>
         </div>
     </div>
+    
+    </div>
     <div id="popup-modal" tabindex="-1"
-            class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-            <div class="relative w-full max-w-md max-h-full">
+        class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative w-full max-w-md max-h-full bg-white rounded-lg shadow-lg">
                 <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                     <button type="button"
                         class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
