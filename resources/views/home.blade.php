@@ -2,7 +2,7 @@
 
 @section('content')
  
-    <div id="default-carousel" class="relative w-full text-center" data-carousel="slide" >
+    <div id="default-carousel" class="relative w-full text-center" data-carousel="slide"  style="z-index: 3;">
         <!-- Carousel wrapper -->
         <div class="relative h-80 overflow-hidden  md:h-[32rem] mx-auto max-w-7xl">
             @foreach ($banners as $item)
