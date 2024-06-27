@@ -9,13 +9,13 @@
    </style>
 
     <div class="flex items-center justify-center h-screen">
-        <div style="width:70%;">
+        <div style="width:100%;">
             
 
             <div class="container flex justify-center items-center">
                 <div ></div>
                 <div class="flex bg-orange-500 bg-opacity-50" style="width:1000px;">
-                    <div class="flex-1 w-1/2 ml-10" >
+                     <div class="flex-1 w-1/2 ml-0 sm:ml-10" >
                        
                             <div class="max-w-full p-10 rounded  shadow-2xl bg-white -mt-10 -mb-10" >
                                 <div class="separato"></div>
@@ -105,9 +105,9 @@
                             </div>
     
                     </div>
-                    <div class="flex-1 w-1/2">
-                        <div class="flex items-center justify-center" >
-                            <img src="{{ asset('img/anahuac-logo.png') }}" alt="logo" style="width: 260px; height: 260px;margin-top:60px;" >
+                    <div class="hidden sm:flex sm:flex-1 sm:w-1/2 justify-end">
+                        <div class="flex items-center mr-2 sm:ml-10">
+                            <img src="{{ asset('img/anahuac-logo.png') }}" alt="logo" style="width: 240px; height: 240px; margin-right:13vh;">
                         </div>
                     </div>
                 </div>  
