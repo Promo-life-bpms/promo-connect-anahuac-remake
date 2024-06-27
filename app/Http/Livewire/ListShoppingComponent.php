@@ -16,10 +16,13 @@ class ListShoppingComponent extends Component
         $total = 0;
 
         $user = auth()->user();
-        if ($user->hasRole(['buyers-manager', 'seller' ])) {
+        if ($user->hasRole(['buyers-manager' ])) {
             $shoppings = Shopping::orderBy('created_at', 'desc')->paginate(20);
             $total = $shoppings->sum('precio_total');
-        }else{
+        }else if($user->hasRole(['seller' ])){
+            $shoppings = Shopping::where('status', 1)->latest()->paginate(10);
+        }
+        else{
             $shoppings = Shopping::where('user_id', $user->id)->orderBy('created_at', 'desc')->paginate(20);
             $total = $shoppings->sum('precio_total');
         }
