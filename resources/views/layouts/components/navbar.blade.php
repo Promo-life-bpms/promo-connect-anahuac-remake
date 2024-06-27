@@ -86,7 +86,7 @@
     </div>
 
     <!-- Menú desplegable para dispositivos móviles -->
-    <div id="mobile-menu" class="hidden md:hidden flex flex-col justify-end items-start bg-white text-black">
+    <div id="mobile-menu" class="hidden md:hidden flex flex-col justify-end items-start bg-white text-black" style="z-index: 10">
         
         <div class="flex flex-col items-start">
             <a href="/" class="text-sm text-orange-500 font-semibold mt-4 px-4">Inicio</a>
