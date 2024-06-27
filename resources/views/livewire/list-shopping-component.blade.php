@@ -77,10 +77,10 @@
 
       
       <div class="w-full overflow-x-auto">
-        <table class="table-auto">
+        <table class="w-full">
             <thead>
                 <tr class="bg-primary text-white text-sm sm:text-xs">
-                <th style="width: 10%;" class="p-2">#</th>
+                <th style="width: 10%; padding:20px 0 20px 0" class="p-2">#</th>
                 <th style="width: 10%;">Imagen</th>
                 <th style="width: 10%;">Usuario</th>
                 <th style="width: 15%;">Producto</th>
