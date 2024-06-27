@@ -1,27 +1,28 @@
 @extends('layouts.cotizador')
 
 @section('content')
-    <div class="mx-auto">
-        {{-- @if(session('mensaje'))
-            <div class="alert alert-success">
-                {{ session('mensaje') }}
-            </div>
-        @endif --}}
+    <div class="w-full">
+      
         <div class="flex justify-between mx-20">
             
-            <div class="font-semibold text-slate-700 py-8 flex items-center space-x-2">
+            <div class="font-semibold text-slate-700 flex items-center space-x-2">
                 <a class="text-secondary" href="/">Inicio</a>
                 <p class="text-secondary"> / </p>
                 <a class="text-secondary" href="#">Solicitudes especiales</a>
             </div>
         
             <div class="mt-6">
-                <!-- Modal toggle -->
+                @if(session('mensaje'))
+                    <div class="alert alert-success">
+                        {{ session('mensaje') }}
+                    </div>
+                @endif 
+            
                 <button data-modal-target="default-modal" data-modal-toggle="default-modal" class="block text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
                     Crear nueva solicitud
                 </button>
   
-                <!-- Main modal -->
+             
                 <div id="default-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
                     <div class="relative p-4 w-full max-w-2xl max-h-full">
                         <!-- Modal content -->
@@ -51,19 +52,19 @@
                                     </div>
 
                                     <div class="mb-4">
-                                        <label for="image_reference" class="block text-gray-700 text-sm font-bold mb-2">Referencia de Imagen</label>
+                                        <label for="image_reference" class="block text-gray-700 text-sm font-bold mb-2">Imagen de referencia (opcional)</label>
                                         <input type="file" name="image_reference" id="image_reference" class="w-full p-2 border rounded-md" >
                                     </div>
 
                                     <div class="mb-4">
-                                        <label for="file" class="block text-gray-700 text-sm font-bold mb-2">Archivo</label>
+                                        <label for="file" class="block text-gray-700 text-sm font-bold mb-2">Archivo (opcional)</label>
                                         <input type="file" name="file" id="file" class="w-full p-2 border rounded-md" >
                                     </div>
 
                                 </div>
 
                                 <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
-                                    <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Aceptar</button>
+                                    <button type="submit" class="text-white bg-primary hover:bg-orange-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Aceptar</button>
                                     <button data-modal-hide="default-modal" type="button" class="ms-3 text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancelar</button>
                                 </div>
 
@@ -80,20 +81,20 @@
             @if( count($special_requests) == 0 )
 
                 <div>
-                    <p class="text-lg text-black">No hay solicitudes especiales</p>
+                    <p class="text-base text-black">No hay solicitudes especiales</p>
                 </div>
 
             @else
 
                 <table  style="width:90%;">
 
-                    <thead class="bg-blue-900 text-white">
+                    <thead class="bg-primary text-white">
                         <tr>
                             <th style="width: 5%;" class="p-4">#</th>
-                            <th style="width: 35%;">Descripción</th>
+                            <th style="width: 30%;">Descripción</th>
                             <th style="width: 15%;">Imagen de referencia</th>
                             <th style="width: 15%;">Archivo</th>
-                            <th style="width: 15%;">Fecha</th>
+                            <th style="width: 20%;">Status</th>
                             <th style="width: 15%;">Opciones</th>
                         </tr>
                     </thead>
@@ -101,7 +102,7 @@
 
                         @foreach($special_requests as $special_request)
 
-                            <tr class="border">
+                            <tr class="border text-sm">
                                 <td class="m-8">{{ $loop->iteration }}</td>
                                 <td>
                                     {{ $special_request->description }}
@@ -126,14 +127,33 @@
                                 </td>
 
                                 <td>
-                                    {{ $special_request->updated_at->format('d-m-Y H:s') }}
+                                    @switch($special_request->status)
+                                        @case(1)
+                                            <span class="bg-gray-100 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded">Solicitud enviada</span>
+                                            @break
+                                        @case(2)
+                                            <span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Solicitud procesada</span>
+                                            @break
+                                        @default
+                                            
+                                    @endswitch
                                 </td>
 
                                 <td>
+                                    @switch($special_request->status)
+                                        @case(1)
+                                            <button data-modal-target="edit-modal-{{$special_request->id}}" data-modal-toggle="edit-modal-{{$special_request->id}}" class="block text-white bg-primary hover:bg-primary focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center  ml-16" type="button">
+                                                Editar
+                                            </button>
+                                            @break
+                                        @case(2)
+                                            <p class="text-sm"> No disponible</p> 
+                                            @break
+                                        @default
+                                            
+                                    @endswitch
                                     <!-- Modal toggle -->
-                                    <button data-modal-target="edit-modal-{{$special_request->id}}" data-modal-toggle="edit-modal-{{$special_request->id}}" class="block text-white bg-primary hover:bg-primary focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center  ml-16" type="button">
-                                        Editar
-                                    </button>
+                                 
                     
                                     <!-- Main modal -->
                                     <div id="edit-modal-{{$special_request->id}}" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
@@ -166,7 +186,7 @@
                                                         </div>
 
                                                         <div class="mb-4">
-                                                            <label for="image_reference" class="block text-gray-700 text-sm font-bold mb-2 text-start">Referencia de Imagen</label>
+                                                            <label for="image_reference" class="block text-gray-700 text-sm font-bold mb-2 text-start">Imagen de referencia</label>
                                                             <input type="file" name="image_reference" id="image_reference" class="w-full p-2 border rounded-md" >
                                                         </div>
 

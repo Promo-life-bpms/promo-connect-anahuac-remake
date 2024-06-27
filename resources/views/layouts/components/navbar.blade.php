@@ -1,4 +1,4 @@
-<div class="fixed top-0 left-0 right-0 z-50 bg-white">
+<div class="fixed top-0 left-0 right-0 z-50 bg-white" style="z-index: 20;">
 
     <!-- Menú para dispositivos de escritorio  -->
     <div class="hidden md:flex md:justify-between md:items-center md:h-20 bg-white text-white px-12">
@@ -28,10 +28,13 @@
 
             @role([ 'buyer'])
                 <a href="{{ route('compras') }}" class="text-sm text-orange-500 font-semibold mt-4 px-4">Mis Compras</a>
+                <a href="{{ route('special') }}" class="text-sm text-orange-500 font-semibold mt-4 px-4">Solicitudes especiales</a>
+
             @endrole
 
             @role(['buyers-manager'])
                 <a href="{{ route('compras') }}" class="text-sm text-orange-500 font-semibold mt-4 px-4">Solicitudes de Compra</a>
+                <a href="{{ route('special') }}" class="text-sm text-orange-500 font-semibold mt-4 px-4">Solicitudes especiales</a>
             @endrole
 
             @role('seller')
@@ -103,10 +106,12 @@
 
             @role([ 'buyer'])
                 <a href="{{ route('compras') }}" class="text-sm text-orange-500 font-semibold mt-4 px-4">Mis Compras</a>
+                <a href="{{ route('special') }}" class="text-sm text-orange-500 font-semibold mt-4 px-4">Solicitudes especiales</a>
             @endrole
 
             @role(['buyers-manager'])
                 <a href="{{ route('compras') }}" class="text-sm text-orange-500 font-semibold mt-4 px-4">Solicitudes de Compra</a>
+                <a href="{{ route('special') }}" class="text-sm text-orange-500 font-semibold mt-4 px-4">Solicitudes especiales</a>
             @endrole
  
             @role('seller')
