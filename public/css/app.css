@@ -1497,9 +1497,6 @@ input:checked + .toggle-bg {
 .max-w-md {
   max-width: 28rem;
 }
-.max-w-sm {
-  max-width: 24rem;
-}
 .flex-1 {
   flex: 1 1 0%;
 }
@@ -2371,9 +2368,6 @@ input:checked + .toggle-bg {
 .leading-tight {
   line-height: 1.25;
 }
-.leading-relaxed {
-  line-height: 1.625;
-}
 .tracking-wide {
   letter-spacing: 0.025em;
 }
@@ -2396,10 +2390,6 @@ input:checked + .toggle-bg {
 .text-blue-600 {
   --tw-text-opacity: 1;
   color: rgb(28 100 242 / var(--tw-text-opacity));
-}
-.text-blue-700 {
-  --tw-text-opacity: 1;
-  color: rgb(26 86 219 / var(--tw-text-opacity));
 }
 .text-blue-800 {
   --tw-text-opacity: 1;
@@ -3160,6 +3150,10 @@ input:checked + .toggle-bg {
     margin-left: 0px;
   }
 
+  .sm\:ml-10 {
+    margin-left: 2.5rem;
+  }
+
   .sm\:ml-4 {
     margin-left: 1rem;
   }
@@ -3182,10 +3176,6 @@ input:checked + .toggle-bg {
 
   .sm\:flex {
     display: flex;
-  }
-
-  .sm\:table-cell {
-    display: table-cell;
   }
 
   .sm\:hidden {
